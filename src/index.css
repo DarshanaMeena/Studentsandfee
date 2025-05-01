@@ -1,0 +1,25 @@
+@import "tailwindcss";
+/* From Uiverse.io by Yaya12085 */ 
+label.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 4px;
+    display: block;
+  }
+  .cursor{
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(rgb(80, 149, 234),rgb(124, 10, 173));
+    border-radius: 50%;
+    position:absolute;
+    mix-blend-mode: difference;
+    transition: all linear 0.2s;
+    z-index: 1;
+}
+
+.changeposition{
+  top: 400px !important;
+  left : 40% !important;
+}
+
+
