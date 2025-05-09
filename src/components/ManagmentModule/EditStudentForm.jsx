@@ -23,7 +23,7 @@ function EditStudentForm() {
 
     useEffect(()=> {
       getStudInfo();
-    },[])
+    }, [])
 
     async function updateform(ev,key) {
         let val = ev.target.value;
@@ -109,14 +109,13 @@ const formRef = useRef(null);
         
           }
 
-          async function updateform(e){
+          async function studentupdateform(e){
             e.preventDefault();
-            let formdata = new FormData($('#formbatch')[0]);
+            let formdata = new FormData($('#RegisterForm')[0]);
            // console.log(formdata)
-            let resultup= await CallAjax('http://localhost:4050/editStudents',formdata,'PUT');
-            
+            let resultup= await CallAjax('http://localhost:4050/editstud',formdata,'PUT');
             //setEditbatch(resultup)        
-           move('/batches')
+            goto('/allstudentrecord')
           alert()
            
     
@@ -221,7 +220,9 @@ const formRef = useRef(null);
       Studentedit.map((val)=>(
 
       
-        <form   id='RegisterForm' onSubmit={updateform} className=' py-9 px-9 '>
+        <form   id='RegisterForm' onSubmit={studentupdateform} className=' py-9 px-9 '>
+       <input type="hidden" name='id' value={val.id}/>
+          
             <div class="mb-5">
                 <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
                     Student Name
@@ -244,11 +245,11 @@ const formRef = useRef(null);
                 <input type="email" name="email" id="email" placeholder="Enter your email"
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md" value={val.stude_email} onChange={(ev) => {updateform(ev,'email')}}/>
             </div>
-            <div class="mb-5">3
+            <div class="mb-5">
              <label for="date" class="mb-3 block text-base font-medium text-[#07074D]">
-                            Date
+                            Date Of Birth
                         </label>
-                        <input type="date" name="date" id="date"
+                        <input type="date" name="dob" id="date"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md" value={val.stude_dob} onChange={(ev) => {updateform(ev,'date')}}/>
             </div>
           

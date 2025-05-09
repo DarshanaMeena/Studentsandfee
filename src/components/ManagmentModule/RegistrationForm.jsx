@@ -8,13 +8,17 @@ import Addcity from './Addcity';
 import Addvillage from './Addvillage';
 import 'jquery-validation';
 import { ToastContainer, toast } from 'react-toastify';
+import AddDistict from './AddDistict';
  
 function RegistrationForm() {
 const [selectbetch , setSelectbetch] = useState([])
 const[cities,setCities] = useState([])
+const[district,setDistrict] = useState([])
 const[villages,setVillages] = useState([])
 const [selectedValuevilllag, setSelectedValuevillage] = React.useState(null);
 const [selectedValue, setSelectedValue] = React.useState(null);
+const [selectedValuedist, setSelectedValuedist] = React.useState(null);
+
 const formRef = useRef(null);
 
 
@@ -52,7 +56,7 @@ const formRef = useRef(null);
     
         const options = [];
     
-          async function registerstudent() {
+          async function addcity() {
             const response = await CallAjax('http://localhost:4050/getallcities', {}, 'GET')
     
             /*await response.map((city)=>{
@@ -63,13 +67,15 @@ const formRef = useRef(null);
           }
 
           useEffect(() => {
-            registerstudent();
+            addcity();
           },[])
+
+
 
           const handleChangevilllage = (selectedOption) => {
             setSelectedValuevillage(selectedOption);
           };
-          async function registerstudents() {
+          async function addvillage() {
             const responce = await CallAjax('http://localhost:4050/getallvillages',{},'GET')
     
             /*await response.map((city)=>{
@@ -82,22 +88,53 @@ const formRef = useRef(null);
          
     
           useEffect(() => {
-            registerstudents();
+            addvillage();
+          },[])
+
+
+          const handleChangedistrict = (selectedOption) => { 
+            setSelectedValuedist(selectedOption);
+          };
+
+          async function adddistrict() {
+            const responce = await CallAjax('http://localhost:4050/getalldistrict',{},'GET')
+    
+            /*await response.map((city)=>{
+                 options.push({value: city.value, label : city.label});
+            })*/
+                 setDistrict(responce)
+        
+          }
+          
+         
+    
+          useEffect(() => {
+            adddistrict();
           },[])
 
           const [isModalOpen, setIsModalOpen] = useState(false);
           const [isModalvOpen, setIsModalvOpen] = useState(false);
-          
+          const [isModaldOpen, setIsModaldOpen] = useState(false);
+
+              //open city modal
             const openModal = () => {
               setIsModalOpen(true);
             };
+
+            //open village modal
             const openModalv = () => {
                 setIsModalvOpen(true);
+              };
+              //open district modal
+              const openModald = () => {
+                setIsModaldOpen(true);
               };
           
             const closeModal = () => {
               setIsModalOpen(false);
               setIsModalvOpen(false)
+              setIsModaldOpen(false)
+
             };
 
 
@@ -166,12 +203,12 @@ const formRef = useRef(null);
     
   return (
    <div>
-    <ToastContainer className='changeposition'/>
+    {/* <ToastContainer className='changeposition'/> */}
 
     <div>
         <Managmentnavbar />
         </div>
-    <div class="flex items-center justify-center p-12">
+    <div class="flex items-center  md:ms-44 p-12">
    
     <div class="mx-auto w-7xl max-w-[750px] bg-white shadow-2xl  border-gray-200 border-1  rounded-br-3xl rounded-tl-3xl">
     {/* <div className='w-xs m-auto mt-5'>
@@ -206,7 +243,7 @@ const formRef = useRef(null);
             </div>
             <div class="mb-5">
              <label for="date" class="mb-3 block text-base font-medium text-[#07074D]">
-                            Date
+                            Date Of Birth
                         </label>
                         <input type="date" name="date" id="date"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md" />
@@ -280,7 +317,7 @@ const formRef = useRef(null);
                         <option value="">Select Class</option>
                         {
                             selectbetch.map((option)=>(
-                                <option value={option.id}>{option.batch_name}</option>
+                                <option value={option.id}>{option.batch_name}/{option.start_time}</option>
                             ))
                         }
                            </select>
@@ -325,6 +362,44 @@ const formRef = useRef(null);
                 <input type="text" name="address" id="name" 
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md" />
             </div>
+
+            <div class="-mx-3 flex flex-wrap">
+                    
+                <div class="w-full px-3 sm:w-1/2">
+                <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
+                    Distict 
+                </label>
+                    <div class="mb-5">
+                    <div>
+                   
+          <Select
+            options={district}
+            isSearchable
+            value={selectedValuedist}
+            onChange={handleChangedistrict}
+            name='district'
+          />
+          
+        </div>
+
+                    </div>
+                </div>
+                <div class="w-full px-3 sm:w-1/2 mt-auto">
+                    <div class="mb-5">
+                    <div class="flex justify-center">
+                        <div  class="rounded-md bg-gradient-to-r from-blue-700 to-blue-500 px-11 py-3 text-white hover:from-blue-800 hover:to-white-500 cursor-pointer" onClick={openModald}>
+                          Add
+                        </div>
+                        
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <AddDistict isOpen={isModaldOpen} onClose={closeModal} adddist={adddistrict} handleChangedistrict={handleChangedistrict}>
+        <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+       Add Villages
+        </h3>
+      </AddDistict>
                 <div class="-mx-3 flex flex-wrap">
                     
                 <div class="w-full px-3 sm:w-1/2">
@@ -357,7 +432,7 @@ const formRef = useRef(null);
                     </div>
                 </div>
             </div>
-            <Addcity isOpen={isModalOpen} onClose={closeModal} registerstudent={registerstudent} handleChange={handleChange}>
+            <Addcity isOpen={isModalOpen} onClose={closeModal} registerstudent={addcity} handleChange={handleChange}>
         <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
        Add Villages
         </h3>
@@ -391,7 +466,7 @@ const formRef = useRef(null);
             </div>
             </div>
 
-            <Addvillage isOpen={isModalvOpen} onClose={closeModal} registerstudents={registerstudents} handleChangevilllage={handleChangevilllage}>
+            <Addvillage isOpen={isModalvOpen} onClose={closeModal} registerstudents={addvillage} handleChangevilllage={handleChangevilllage}>
             <div className='m-auto'>
             <h3 className="text-lg leading-6 font-medium text-gray-900 " id="modal-headline">
        Add Villages

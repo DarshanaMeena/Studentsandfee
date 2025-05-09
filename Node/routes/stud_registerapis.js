@@ -37,24 +37,6 @@ routes.post('/studentdata' ,upload.none(), (req,res) => {
     })
     // res.send("im get");
 });
-
-//Edit Students
-
-routes.put('/editStudents' ,upload.none(), (req,res) => {
-    //    return res.send(req.body)
-    let {sname,fname,date,email,sphone,fphone,gender,category,classname, batch,city,village} = req.body;
-    
-    mysql.query(`UPDATE student_registration SET stude_name = '${sname}',stude_fname = '${fname}',stude_email = '${email}',stude_dob = '${date}',stude_snum = '${sphone}',stude_pnum = '${fphone}',gender = '${gender}',category = '${category}',betch_id = '${batch}',city_id = '${city}',village_id = '${village}',education = '${classname}' WHERE stud_id = ${req.body.stud_id}`,(error,result) => {
-        if(error) {
-            return res.status(500).json(error);
-        }
-        else {
-            return res.status(200).json(result);
-        }
-    })
-    // res.send("im get");
-});
-
 // all studetn record (get method)
 routes.get("/allstudentdata", upload.none(), (req,res)=>{
     // return res.send(req.body)
@@ -98,13 +80,26 @@ routes.get("/allstudentdata", upload.none(), (req,res)=>{
 
  routes.get("/editstudentform/:id",upload.none(),(req,res) => {
     let {id} = req.params;
-    mysql.query(`SELECT * from student_registration where stud_id = '${id}'`, (error,result) => {
+    mysql.query(`SELECT * from student_registration where stud_id ='${id}'`, (error,result) => {
         if(error) {
             return res.status(500).json(error)
         }
         return res.status(200).json(result);
     } )
  })
+
+ //Edit Students
+
+routes.put('/editstud',upload.none(),(req,res)=>{
+    const {sname,fname,email,dob,sphone,fphone,gender,category,classname,batch,address,city,village}=req.body;
+    let stude_id = req.params.id;
+    mysql.query(`UPDATE student_registration SET stude_name = '${sname}', stude_fname='${fname}', stude_email= '${email}', stude_dob='${dob}',stude_snum='${sphone}',stude_pnum='${fphone}',gender='${gender}',category='${category}',education='${classname}',betch_id='${batch}',address='${address}',city_id='${city}',village_id='${village}' WHERE stud_id='${stude_id}'`,(error,result)=>{
+      if(error){
+        return res.status(500).json(error);
+      }
+      return res.status(200).json(result);
+    })
+  })
 
 //  get city (get method)
  routes.get("/getallcities", upload.none(), (req,res)=>{
@@ -134,6 +129,17 @@ routes.get("/allstudentdata", upload.none(), (req,res)=>{
          
      })
     
+ })
+
+ //get district(get method)
+ routes.get("/getalldistrict",upload.none(),(req,res)=>{
+    mysql.query(`select distict_id as value,dist_name as label from district`,(error,result)=>{
+        if(error){
+            return res.status(500).json(error)
+         }
+ 
+             return res.status(200).json(result);
+    })
  })
 
 //  ADD CITY API (post method)
@@ -168,11 +174,31 @@ routes.post('/addvillage' ,upload.none(), (req,res) => {
     })
     // res.send("im get");
 });
+
+//ADD District API (post method) 
+routes.post('/adddistict' ,upload.none(), (req,res) => {
+    //    return res.send(req.body)
+    let {dist} = req.body;
+    
+    mysql.query(`INSERT INTO district(dist_name) VALUES('${dist}')`,(error,result) => {
+        if(error) {
+            return res.status(500).json(error);
+        }
+        else {
+            return res.status(200).json(result);
+        }
+    })
+    // res.send("im get");
+});
+
+
+
+
 // Student view details (get Method)
 routes.get("/viewdetails/:id", upload.none(), (req,res)=>{
     // return res.send(req.body)
      
-     mysql.query(`select * from student_registration JOIN batches on batches.id = student_registration.betch_id JOIN cities on cities.city_id =student_registration.city_id JOIN villages on villages.village_id =student_registration.village_id where student_registration.status=1 AND stud_id= ${req.params.id}`, (error, result)=>{
+     mysql.query(`select * from student_registration JOIN batches on batches.id = student_registration.betch_id JOIN cities on cities.city_id = student_registration.city_id JOIN villages on villages.village_id =student_registration.village_id where student_registration.status=1 AND stud_id= ${req.params.id}`, (error, result)=>{
          if(error){
              return res.status(500).json(error)
          }

@@ -27,6 +27,7 @@ import Testing from "./components/Testing";
 import Viewdetail_stude from "./components/ManagmentModule/Viewdetail_stude";
 import EditStudentForm from "./components/ManagmentModule/EditStudentForm";
 import AdminHomePage from "./components/AdminHomePage";
+import Testing2 from "./assets/Testing2";
 
 function App() {
  
@@ -62,7 +63,9 @@ function App() {
         <Route path="batches" element={<Batchesmodul />} />
         <Route path="batchform" element={<Addbatches />} />
         <Route path="editbatches/:id" element={<Editbatchform />} />
-        <Route path="test" element={<Testing />} />
+        <Route path="dashboard" element={<div><Managmentnavbar /> <Testing /></div>} />
+        <Route path="testing" element={<Testing2 />} />
+
         {/* <Route path="editbatches/:id" element = {<BatchesEditform/>} /> */}
         
       </Routes>

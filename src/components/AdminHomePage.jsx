@@ -83,12 +83,12 @@ function AdminHomePage() {
     </div>
 </div> */}
 
-<div className=' bg-blue-800 h-96 '>
+{/* <div className=' bg-blue-800 h-40 '>
 <main class="container mx-auto px-4 py-8">
         <h1 class="text-4xl font-bold text-white mb-4">Welcome to Our Website</h1>
         <p class="text-white">This is the main content area. The navbar above has beautiful animations and effects.</p>
     </main>
-</div>
+</div> */}
 
 
     </div>

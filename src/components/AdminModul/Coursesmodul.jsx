@@ -29,8 +29,10 @@ const userrole = useRef(localStorage.getItem('role'));
 console.log('user role', userrole)
 
   return (
-    <div>
-      { userrole.current == 1 ? <Adminnavbar /> : <Managmentnavbar/> }
+    <div className='gird grid-cols-2'>
+      <div> { userrole.current == 1 ? <Adminnavbar /> : <Managmentnavbar/> } </div>
+      <div>
+      
 <div className='grid justify-end mr-5'>
 <Link to="/addcourse">
      <button class=" mt-5  bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
@@ -39,7 +41,7 @@ console.log('user role', userrole)
      </Link> 
 </div>
     
-     <div className='grid grid-cols-1 ms-6 sm:grid-col-2 md:grid-cols-4'>
+     <div className='grid md:ms-72 md:grid-cols-3 xs:grid-cols-1 '>
      {
   coursdata.map((getdata)=>(
 <div className=' mt-8 m-auto'>
@@ -79,6 +81,7 @@ console.log('user role', userrole)
      </div>
      
         
+    </div>
     </div>
   )
 }

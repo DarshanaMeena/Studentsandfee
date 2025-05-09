@@ -43,9 +43,9 @@ setGetbatches(batchdata);
      
     { userrole.current == 1 ? <Adminnavbar /> : <Managmentnavbar/> }
 
-    <div className='grid justify-end mr-5 mt-5'>
+    <div className='grid  justify-end mr-5 mt-5'>
         
-      </div>
+    
      <div className='grid grid-cols-2 justify-end mr-5 mt-5 gap-3'>
       <div>
       <Link to='/allstudentrecord'> <button className='bg-blue-500 w-full text-white p-2 rounded mt-[10px] ms-[10px] cursor-pointer '>All Student Record</button></Link>

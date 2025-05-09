@@ -14,7 +14,7 @@ function Editbatchform() {
     const move = useNavigate();
     async function managementedit(){
         let response = await CallAjax(`http://localhost:4050/batchedit/${id}`,{}, 'GET')
-        console.log(response)
+        // console.log(response)
         setEditbatch(response)
     }
     useEffect(()=>{
@@ -36,7 +36,6 @@ function Editbatchform() {
         
         //setEditbatch(resultup)        
        move('/batches')
-      alert()
        
 
     }
