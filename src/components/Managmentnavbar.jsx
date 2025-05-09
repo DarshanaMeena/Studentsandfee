@@ -96,7 +96,7 @@ function Managmentnavbar() {
                         <Link to="/coursesmodule" className="md:p-4 py-2 block hover:text-purple-400">Courses</Link>
                         </li>
             <li>
-              <a className="md:p-4 py-2 block hover:text-purple-400" href="#">Fees</a>
+            <Link to="/FeesModule"  className="md:p-4 py-2 block hover:text-purple-400" href="#">Fees</Link>
             </li>
             <li>
               {/* <button className='border border-2 bg-lime-800 '> */}

@@ -59,7 +59,7 @@ routes.put('/editStudents' ,upload.none(), (req,res) => {
 routes.get("/allstudentdata", upload.none(), (req,res)=>{
     // return res.send(req.body)
      
-     mysql.query(`select * from student_registration JOIN batches on batches.id = student_registration.betch_id JOIN cities on cities.city_id =student_registration.city_id JOIN villages on villages.village_id =student_registration.village_id where student_registration.status=1`, (error, result)=>{
+     mysql.query(`select * from student_registration JOIN batches on batches.id = student_registration.betch_id JOIN cities on cities.city_id =student_registration.city_id JOIN villages on villages.village_id = student_registration.village_id where student_registration.status=1`, (error, result)=>{
          if(error){
              return res.status(500).json(error)
          }

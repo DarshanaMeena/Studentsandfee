@@ -4,7 +4,7 @@ const db = mysql.createConnection({
     host : 'localhost',
     user : 'root',
     password : '',
-    database : 'managment'
+    database : 'management'
 });
 db.connect((res,err) => {
     if(err) {
@@ -12,4 +12,4 @@ db.connect((res,err) => {
     } else 
     console.log('Data base connection succfully!')
 })
-module.exports=db;
+module.exports = db ;

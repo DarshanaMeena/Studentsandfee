@@ -27,6 +27,11 @@ import Testing from "./components/Testing";
 import Viewdetail_stude from "./components/ManagmentModule/Viewdetail_stude";
 import EditStudentForm from "./components/ManagmentModule/EditStudentForm";
 import AdminHomePage from "./components/AdminHomePage";
+import FeesModule from "./components/FeesModule";
+import FeesDetail from "./components/FeesDetail";
+import FeesRecord from "./components/ManagmentModule/FeesRecord";
+import UpcomingEMIS from "./components/ManagmentModule/UpcomingEMIS";
+import UpcomingFeesForm from "./components/ManagmentModule/UpcomingFeesForm";
 
 function App() {
  
@@ -64,7 +69,15 @@ function App() {
         <Route path="editbatches/:id" element={<Editbatchform />} />
         <Route path="test" element={<Testing />} />
         {/* <Route path="editbatches/:id" element = {<BatchesEditform/>} /> */}
+        <Route path="FeesModule" element={<FeesModule />} />
+        <Route path="FeesDetails/:id" element={<FeesDetail />} />
         
+       
+        <Route path="viewFees/:id" element={<FeesRecord />} />
+
+        <Route path="UpcomingEMIS" element={<UpcomingEMIS />} />
+        <Route path="UPFeesForm" element={<UpcomingFeesForm />} />
+     
       </Routes>
     </BrowserRouter>
       

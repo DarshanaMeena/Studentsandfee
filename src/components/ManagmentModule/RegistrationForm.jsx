@@ -8,6 +8,7 @@ import Addcity from './Addcity';
 import Addvillage from './Addvillage';
 import 'jquery-validation';
 import { ToastContainer, toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
  
 function RegistrationForm() {
 const [selectbetch , setSelectbetch] = useState([])
@@ -26,8 +27,8 @@ const formRef = useRef(null);
     let result = await CallAjax('http://localhost:4050/studentdata',formdata,'POST');
     console.log(result)
     if(result) {
-      alert("Registration Successfuly!")
-      redirect('/allstudentrecord');
+      // alert("Registration Successfuly!")
+      redirect(`/FeesDetails/${result.insertId}`);
     } else {
       console.log('failed')
       toast.error("Something Went Wrong. Please Try Again!");
@@ -102,65 +103,65 @@ const formRef = useRef(null);
 
 
             
-  function validation() {
-    const $form = $(formRef.current);
+  // function validation() {
+  //   const $form = $(formRef.current);
 
-    $("#RegisterForm").validate({
-      rules: {
-        sname: {
-          required: true,
-        },
-        fname: {
-          required: true,
-        },
-        email: {
-            required: true,
-            email: true,
-          },
-          date:{
-            required: true,
-          },
-          sphone:{
-            required: true,
-            minlength: 10,
-            maxlength: 10,
-          },
-          fphone:{
-            required: true,
-            minlength: 10,
-            maxlength: 10,
-          },
-          gender:{
-            required: true,
-          },
-          category:{
-            required:true,
-          },
-          batch:{
-            required:true,
-          },
-          classname:{
-            required:true,
-          },
-          address:{
-            required:true,
-          },
+  //   $("#RegisterForm").validate({
+  //     rules: {
+  //       sname: {
+  //         required: true,
+  //       },
+  //       fname: {
+  //         required: true,
+  //       },
+  //       email: {
+  //           required: true,
+  //           email: true,
+  //         },
+  //         date:{
+  //           required: true,
+  //         },
+  //         sphone:{
+  //           required: true,
+  //           minlength: 10,
+  //           maxlength: 10,
+  //         },
+  //         fphone:{
+  //           required: true,
+  //           minlength: 10,
+  //           maxlength: 10,
+  //         },
+  //         gender:{
+  //           required: true,
+  //         },
+  //         category:{
+  //           required:true,
+  //         },
+  //         batch:{
+  //           required:true,
+  //         },
+  //         classname:{
+  //           required:true,
+  //         },
+  //         address:{
+  //           required:true,
+  //         },
 
-      },
-      messages: {
-        sname: 'Please enter Student number',
-        email: 'Enter a valid email address.',
-        sphone:'please enter at least 10 number'
-      },
-    //   submitHandler: function (form) {
-    //     alert('Registration Successfuly!');
-    //    return true
-    // }
-    });
-  }
-  useEffect(()=>{
-    validation();
-  },[])
+  //     },
+  //     messages: {
+  //       sname: 'Please enter Student number',
+  //       email: 'Enter a valid email address.',
+  //       sphone:'please enter at least 10 number'
+  //     },
+  //   //   submitHandler: function (form) {
+  //   //     alert('Registration Successfuly!');
+  //   //    return true
+  //   // }
+  //   });
+  // }
+  // useEffect(()=>{
+  //   validation();
+  // },[])
    
      
     
@@ -171,6 +172,10 @@ const formRef = useRef(null);
     <div>
         <Managmentnavbar />
         </div>
+        <div className='grid grid-cols-2 justify-end mr-5 mt-5 gap-3'>
+      
+        
+      </div>
     <div class="flex items-center justify-center p-12">
    
     <div class="mx-auto w-7xl max-w-[750px] bg-white shadow-2xl  border-gray-200 border-1  rounded-br-3xl rounded-tl-3xl">

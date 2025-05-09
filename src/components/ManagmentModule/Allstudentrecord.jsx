@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import Managmentnavbar from '../Managmentnavbar'
 
 function Allstudentrecord() {
-const[studentdata,setStudentdata] = useState([])
+const[studentdata,setStudentdata] = useState([]);
 
     async function registerstudent() {
         const response = await CallAjax('http://localhost:4050/allstudentdata', {}, 'GET')
@@ -15,7 +15,7 @@ const[studentdata,setStudentdata] = useState([])
       }
       useEffect(() => {
         registerstudent();
-      },[])
+      },[]);
 
       async function deletstudentrecord(id) {
         let cnf = confirm("Are You Sure You Want To Delete This User");
@@ -67,6 +67,7 @@ const[studentdata,setStudentdata] = useState([])
                 Address
               </th> 
               <th scope='col' className='px-6 py-5'>Students Details</th>
+              {/* <th scope='col' className='px-6 py-5'>Fee Details</th> */}
               <th scope="col" className="px-6 py-5">
                 Action
               </th>
@@ -94,6 +95,11 @@ const[studentdata,setStudentdata] = useState([])
                  <button className='bg-blue-800 w-[150px] text-white p-2 rounded mt-[10px] ms-[10px] cursor-pointer '>View Detail</button>
                   </td>
                   </Link> 
+              <Link to={`/viewFees/${data.stud_id}`}>
+                  <td className="px-4 py-4">
+                 <button className='bg-blue-800 w-[150px] text-white p-2 rounded mt-[10px] ms-[10px] cursor-pointer '>View Fees</button>
+                  </td>
+                  </Link>
                   {/* <td className="px-6 py-4">{data.address.charAt(0).toUpperCase() + data.address.slice(1)}</td> */}
                   <td className="px-2 py-4 text-2xl">
                     
