@@ -211,7 +211,7 @@ function FeesDetail() {
 
                                     <select class="h-[50px] rounded-[5px] text-[16px] xs:text-sm border border-[#D1D5DB] w-full px-2" onChange={handleEmais} name='mode'>
                                         <option value="">--Select Mode--</option>
-                                        <option value="cash">Cash</option>
+                                        <option value="Cash">Cash</option>
                                         <option value="online">Online</option>
                                     </select>
 
