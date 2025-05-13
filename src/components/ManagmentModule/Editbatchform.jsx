@@ -113,6 +113,7 @@ setGetcourse(batchdata);
 }
   
 </div>
+
     </div>
   )
 }

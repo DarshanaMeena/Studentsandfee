@@ -40,8 +40,13 @@ function EditcourseForm() {
                     editcourse.map((editdata)=>(
                         <form id='EditForm' onSubmit={submitcourseForm}>
                         <div class="space-y-6">
-                            <div>
                             <input type="hidden" name='id' value={editdata.id}/>
+                             <div>
+                                <label for="title" class="text-sm xs:text-sm font-medium text-gray-700 mb-1 ">Course Name </label>
+                                <input type="text" id="title" class="h-[50px] rounded-[5px] text-sm xs:text-sm border border-[#D1D5DB] w-full px-2" name="coursecatagery" onChange={(ev) => {updatecourseform(ev,'course_catagery')}} value={editdata.course_catagery}/>
+                            </div>
+
+                            <div>
                                 <label for="title" class="text-sm xs:text-sm font-medium text-gray-700 mb-1 ">Course Name </label>
                                 <input type="text" id="title" class="h-[50px] rounded-[5px] text-sm xs:text-sm border border-[#D1D5DB] w-full px-2" name="coursename" onChange={(ev) => {updatecourseform(ev,'course_name')}} value={editdata.couses_name}/>
                             </div>

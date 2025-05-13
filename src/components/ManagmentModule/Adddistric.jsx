@@ -1,27 +1,25 @@
 import React from 'react'
-import { useState } from 'react'
-import CallAjax from '../../Hook/CallAjax';
 import $ from 'jquery'
-function Addcity({ isOpen, onClose, children, studentteh, handleChange, district }) {
+import CallAjax from '../../Hook/CallAjax';
 
-    async function addcities(ev) {
+function Adddistric({isOpen,onClose,studentdistric,handledistric,children}) {
+    async function adddistrics(ev) {
         ev.preventDefault();
 
         let formdata = {
-            city : $("#cityname").val(),
-            dis : district.value
+            cialldistrcity : $("#districtname").val()
         }
        
         
-        let result = await CallAjax('http://localhost:4050/addcity',formdata,'POST');
+        let result = await CallAjax('http://localhost:4050/adddis',formdata,'POST');
         console.log(result)
         if(result) {
           
-          await studentteh(district.value);
+          await studentdistric();
 
-          await handleChange({value: $("#cityname").val(), label: $("#cityname").val()})
+          await handledistric({value: $("#districtname").val(), label: $("#districtname").val()})
           
-          onClose()
+          onClose();
         } else {
           console.log('failed')
         }
@@ -46,10 +44,10 @@ function Addcity({ isOpen, onClose, children, studentteh, handleChange, district
 
             <div className="px-10">
                     <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
-                                City Name
+                                Distric Name
                             </label>
                             <div class="">
-              <input type="text" class="relative bg-gray-50ring-0 outline-none border border-neutral-500 text-neutral-900 placeholder-black-100 text-sm rounded-lg focus:ring-violet-100  focus:border-violet-500 block w-64 p-2.5 checked:bg-emerald-500" placeholder="City..." name='cname' id="cityname"/>
+              <input type="text" class="relative bg-gray-50ring-0 outline-none border border-neutral-500 text-neutral-900 placeholder-black-100 text-sm rounded-lg focus:ring-violet-100  focus:border-violet-500 block w-64 p-2.5 checked:bg-emerald-500" placeholder="Distric..." name='cname' id="districtname"/>
             </div>
             
                     </div>
@@ -61,7 +59,7 @@ function Addcity({ isOpen, onClose, children, studentteh, handleChange, district
               Close
             </button>
 
-            <button onClick={addcities}
+            <button onClick={adddistrics}
              
              className=" inline-flex cursor-pointer items-center gap-1 rounded border border-slate-300 bg-gradient-to-b from-slate-50 to-slate-200 px-4 py-2 font-semibold hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-300 focus-visible:ring-offset-2 active:opacity-100" type='button'
            >
@@ -77,4 +75,4 @@ function Addcity({ isOpen, onClose, children, studentteh, handleChange, district
   )
 }
 
-export default Addcity
+export default Adddistric

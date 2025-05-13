@@ -2,12 +2,13 @@ import React from 'react'
 import CallAjax from '../../Hook/CallAjax';
 import $ from 'jquery'
 
-function Addvillage({ isOpen, onClose, children, registerstudents, handleChangevilllage },props) {
-    async function addvillages(ev) {
+function Addvillage({ isOpen, onClose, children, registerstudents, handleChangevilllage,selectedValue },props) {
+    async function addvillages(ev) { alert()
         ev.preventDefault();
 
         let formdata = {
-            village : $("#villagename").val()
+            village : $("#villagename").val(),
+            teh : selectedValue.value
         }
        
         
@@ -16,7 +17,7 @@ function Addvillage({ isOpen, onClose, children, registerstudents, handleChangev
         if(result) {
           console.log("Add village ");
           
-          await registerstudents();
+          await registerstudents(selectedValue.value);
 
           await handleChangevilllage({value: $("#villagename").val(), label: $("#villagename").val()})
           

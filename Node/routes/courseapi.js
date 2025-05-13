@@ -23,9 +23,9 @@ routes.use(cors());
 
 routes.post('/addcoursedata' ,upload.none(), (req,res) => {
     //    return res.send(req.body)
-    let {coursename,duration,fees} = req.body;
+    let {coursename,duration,fees,coursecatagery} = req.body;
     
-    mysql.query(`INSERT INTO courses(couses_name,duration,fees) VALUES('${coursename}','${duration}','${fees}')`,(error,result) => {
+    mysql.query(`INSERT INTO courses(couses_name,duration,fees,course_catagery) VALUES('${coursename}','${duration}','${fees}','${coursecatagery}')`,(error,result) => {
         if(error) {
             return res.status(500).json(error);
         }
