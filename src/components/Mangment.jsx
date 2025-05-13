@@ -101,7 +101,7 @@ function Mangment() {
                       <div className="relative">
                         <input
                           type="text"
-                          placeholder="Admin Username"
+                          placeholder="Managment Username"
                           className="w-full px-12 py-3 bg-gray-100 rounded-md focus:outline-none"
                           name='email'
                         />

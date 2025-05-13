@@ -3,7 +3,12 @@ import paramlogo from '../assets/param-logo.png'
 import { Link } from 'react-router-dom'
 import $ from 'jquery'
 import image from '../assets/mn.avif'
+import { Typewriter } from 'react-simple-typewriter'
 function Loginpage() {
+
+  const handleDone = () => {
+    console.log(`Done after 5 loops!`)
+  }
 
   
  
@@ -27,7 +32,21 @@ function Loginpage() {
           <div className="md:w-1/2 flex items-center justify-center p-5 bg-white">
            <div className=' w-64  py-6 rounded m-auto'>
                    <img src={paramlogo} alt="" className='w-28 m-auto '/>
-                   <div className='text-center font-bold text-xl'>Student Managment System</div>
+                   <div className='text-center font-bold text-xl'>
+                    <span>
+                    {/* Style will be inherited from the parent element */}
+                    <Typewriter
+                      words={['Student Managment System']}
+                      loop={0}
+                      cursor={false}
+                      cursorStyle='_'
+                      typeSpeed={70}
+                      deleteSpeed={0}
+                      delaySpeed={10000}
+                      onLoopDone={handleDone}
+                    />
+                  </span>
+                    </div>
                    <div className='text-center mt-2'>
                        <div >
                           <Link to="Admin"><button className='rounded-tr-lg w-36 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-white-500 p-3 text-white font-bold'>Admin </button></Link> 
@@ -36,7 +55,7 @@ function Loginpage() {
                        <Link to="Management"><button className='rounded-tr-lg w-36 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-white-500 p-3 text-white mt-4 font-bold'>Managment </button></Link>
                        </div>
                        <div>
-                       <Link to="Management"><button className='rounded-tr-lg w-36 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-white-500 p-3 text-white mt-4 font-bold'>Student </button></Link>
+                       <Link to="Student"><button className='rounded-tr-lg w-36 bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-white-500 p-3 text-white mt-4 font-bold'>Student </button></Link>
                        </div>
                    </div>
                    </div>

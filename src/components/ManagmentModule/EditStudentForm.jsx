@@ -206,15 +206,15 @@ const formRef = useRef(null);
     <div>
         <Managmentnavbar />
         </div>
-    <div class="flex items-center justify-center p-12">
+    <div class="flex items-center justify-center p-12  md:ms-44">
    
-    <div class="mx-auto w-7xl max-w-[750px] bg-white shadow-2xl  border-gray-200 border-1  rounded-br-3xl rounded-tl-3xl">
+    <div class="mx-auto w-full max-w-[750px] bg-white shadow-2xl  border-gray-200 border-1  rounded-br-3xl rounded-tl-3xl">
     {/* <div className='w-xs m-auto mt-5'>
     <h1 className='text-xl text-center bg-blue-500 rounded-br-3xl rounded-tl-3xl text-white hover:bg-blue-600 py-4 '> Student Registration</h1>
     </div> */}
 
-<div className='w-xs ml-auto'>
-    <h1 className=' text-xl text-center bg-gradient-to-r from-blue-700 to-blue-500 px-11 py-3 font-bold text-white hover:from-blue-800 hover:to-white-500 rounded-br-3xl  hover:bg-blue-800 py-4 '> Student Registration</h1>
+<div className=' ml-auto'>
+    <h1 className=' text-xl text-center bg-gradient-to-r from-blue-700 to-blue-500 px-11 py-3 font-bold text-white hover:from-blue-800 hover:to-white-500 rounded-tl-3xl  hover:bg-blue-800 py-4 '> Student Registration</h1>
     </div>
     {
       Studentedit.map((val)=>(

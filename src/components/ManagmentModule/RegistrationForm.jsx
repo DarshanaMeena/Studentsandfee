@@ -215,8 +215,8 @@ const formRef = useRef(null);
     <h1 className='text-xl text-center bg-blue-500 rounded-br-3xl rounded-tl-3xl text-white hover:bg-blue-600 py-4 '> Student Registration</h1>
     </div> */}
 
-<div className='w-xs ml-auto'>
-    <h1 className=' text-xl text-center bg-gradient-to-r from-blue-700 to-blue-500 px-11 py-3 font-bold text-white hover:from-blue-800 hover:to-white-500 rounded-br-3xl  hover:bg-blue-800 py-4 '> Student Registration</h1>
+<div className=' ml-auto'>
+    <h1 className=' text-xl text-center bg-gradient-to-r from-blue-700 to-blue-500 px-11 py-3 font-bold text-white hover:from-blue-800 hover:to-white-500 rounded-tl-3xl  hover:bg-blue-800 py-4 '> Student Registration</h1>
     </div>
         <form  onSubmit={stud_formdata} id='RegisterForm' className=' py-9 px-9 '>
             <div class="mb-5">

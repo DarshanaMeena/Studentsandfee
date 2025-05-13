@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Managmentnavbar from '../Managmentnavbar';
 import Adminnavbar from '../Adminnavbar';
+import moment from "moment"
 
 import ToastMsg from '../../Hook/ToastMsg';
 
@@ -128,7 +129,7 @@ setGetbatches(batchdata);
     </p>
     <p class=" text-gray-600 font-bold"> {batchdata.couses_name} </p>
     <p class="overflow-hidden leading-5 break-all text-zinc-600 max-h-10">
-    {batchdata.start_time} To {batchdata.end_time}
+    {moment(moment(new Date()).format('YYYY-MM-DD')+' ' +batchdata.start_time).format('hh:mm a')} To {moment(moment(new Date()).format('YYYY-MM-DD')+' ' +batchdata.end_time).format('hh:mm a')}
     </p>
   </div>
 

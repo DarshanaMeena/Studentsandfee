@@ -36,6 +36,9 @@ routes.post("/login/:role", upload.none(), (req,res)=>{
     })
    
 });
+
+
+
 routes.post('/data' ,upload.none(), (req,res) => {
     //    return res.send(req.body)
     let {name,email,phone,qualification,address} = req.body;

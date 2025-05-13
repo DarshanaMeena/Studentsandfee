@@ -8,6 +8,7 @@ import './App.css'
 import Loginpage from './components/Loginpage'
 import Admin from './components/Admin';
 import Mangment from './components/Mangment';
+import Student from './components/Student';
 import Managmentnavbar from "./components/Managmentnavbar";
 import Adminnavbar from "./components/Adminnavbar";
 import Managmodul from "./components/AdminModul/Managmodul";
@@ -43,6 +44,7 @@ function App() {
           <Route index element={<Loginpage />} />
           <Route path="Admin" element={<Admin />} />
           <Route path="Management" element={<Mangment />} />
+          <Route path="Student" element={<Student />} />
           <Route path="adminnav" element={<div><Adminnavbar /> <AdminHomePage /></div>} />
           <Route path="managmentnav" element={<div><Managmentnavbar /> <AdminHomePage /></div>} />
       {/* Admin Routing */}
@@ -58,11 +60,13 @@ function App() {
         <Route path="studentregister" element={<RegistrationForm />} />
         <Route path="allstudentrecord" element={<Allstudentrecord />} />
         <Route path="viewdetail/:id" element={<Viewdetail_stude />}/>
+        <Route path="studentdetail" element={<Viewdetail_stude />}/>
         <Route path="editstudentform/:id" element={<EditStudentForm />}/>
         {/* Batches Module */}
         <Route path="batches" element={<Batchesmodul />} />
         <Route path="batchform" element={<Addbatches />} />
         <Route path="editbatches/:id" element={<Editbatchform />} />
+         <Route path="admindashboard" element={<div><Adminnavbar /> <Testing /></div>} />
         <Route path="dashboard" element={<div><Managmentnavbar /> <Testing /></div>} />
         <Route path="testing" element={<Testing2 />} />
 

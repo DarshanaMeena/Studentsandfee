@@ -27,7 +27,7 @@ routes.post('/studentdata' ,upload.none(), (req,res) => {
     //    return res.send(req.body)
     let {sname,fname,date,email,sphone,fphone,gender,category,classname, batch,city,address,village} = req.body;
     
-    mysql.query(`INSERT INTO student_registration(stude_name,stude_fname,stude_email,stude_dob,stude_snum,stude_pnum,gender,category,betch_id,city_id,village_id,address,education) VALUES('${sname}','${fname}','${email}','${date}','${sphone}','${fphone}','${gender}','${category}','${batch}','${city}','${village}','${address}','${classname}')`,(error,result) => {
+    mysql.query(`INSERT INTO student_registration(stude_name,stude_fname,stude_email,stude_pass,stude_dob,stude_snum,stude_pnum,gender,category,betch_id,city_id,village_id,address,education) VALUES('${sname}','${fname}','${email}','${md5('meena')}','${date}','${sphone}','${fphone}','${gender}','${category}','${batch}','${city}','${village}','${address}','${classname}')`,(error,result) => {
         if(error) {
             return res.status(500).json(error);
         }
@@ -37,6 +37,25 @@ routes.post('/studentdata' ,upload.none(), (req,res) => {
     })
     // res.send("im get");
 });
+
+//Student Login
+
+routes.post("/studentlogin", upload.none(), (req,res)=>{
+    // let {role} = req.params
+   // return res.send(req.body)
+    const {email , password} = req.body;
+
+    mysql.query(`select * from student_registration where stude_email = '${email}' AND	stude_pass ='${md5(password)}'`, (error, result)=>{
+        if(error){
+            return res.status(500).json(error)
+        }
+
+            return res.status(200).json(result);
+        
+    })
+   
+});
+
 // all studetn record (get method)
 routes.get("/allstudentdata", upload.none(), (req,res)=>{
     // return res.send(req.body)
@@ -208,4 +227,45 @@ routes.get("/viewdetails/:id", upload.none(), (req,res)=>{
      })
     
  })
+
+ routes.get("/dashboarCouts", upload.none(), (req,res)=>{
+    // return res.send(req.body)
+
+    let courseCount = 0;
+    let batchesCount = 0;
+    let studCount = 0;
+     
+     mysql.query(`select count(*) AS totalcourses from courses where status = 1`, (error, result)=>{
+         if(error){
+             return res.status(500).json(error)
+         }
+ 
+           courseCount =  result[0]['totalcourses'];
+
+            mysql.query(`select count(*) AS totalbatches from batches where status = 1`, (error, result)=>{
+                if(error){
+                    return res.status(500).json(error)
+                }
+        
+                batchesCount =  result[0]['totalbatches'];
+
+                mysql.query(`select count(*) AS totalStudents from student_registration where status = 1`, (error, result)=>{
+                if(error){
+                    return res.status(500).json(error)
+                }
+        
+                studCount =  result[0]['totalStudents'];
+
+                return res.status(200).json([{totalcourses : courseCount, totalbatches : batchesCount, totalStudents : studCount}]);
+                
+            })
+                
+            })
+         
+     })
+
+     
+    
+ })
+
 module.exports = routes;

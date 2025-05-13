@@ -20,7 +20,7 @@ label.error {
 
 
 .react-calendar {
-  /* width: 70vw !important; */
+  width: 70vw !important;
   /* border-radius: 12px; */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   font-family: 'Arial', sans-serif;

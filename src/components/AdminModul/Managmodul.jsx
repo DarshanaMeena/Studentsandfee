@@ -46,10 +46,10 @@ function Managmodul() {
 
     <div>
       <Adminnavbar />
-      <div className='flex justify-between mt-7'>
+      <div className='flex justify-between mt-7 md:ms-70'>
         <Link to="/managmentform"><div className='bg-blue-800 mt-5 p-2 w-[180px] rounded text-center text-white ms-1 '>Add Management</div>
         </Link>
-        <div className="relative mt-5 me-1">
+        <div className="relative mt-5 me-5">
           <input type='text'
             class=" pr-11 h-10 pl-3 py-2 bg-transparent border border-1 border-blue-500 placeholder:text-slate-600 text-slate-700 text-sm border border-blue-700 rounded transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-400 shadow-sm focus:shadow-md"
             placeholder="Search..." onKeyUp={seachUsers}
@@ -65,7 +65,7 @@ function Managmodul() {
         </div>
       </div>
 
-      <div>
+      <div >
         <div class="w-full flex justify-between items-center mb-3 mt-1 pl-3">
 
           <div class="ml-3">
@@ -77,10 +77,10 @@ function Managmodul() {
 
 
 
-        <table className="w-full text-sm text-left rtl:text-right text-black dark:text-black m-auto text-center" >
+        <table className=" md:ms-70 text-sm text-left rtl:text-right text-black dark:text-black m-auto text-center" >
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-black dark:text-gray-400 text-center">
             <tr>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className=" py-3">
                 Id
               </th>
               <th scope="col" className="px-6 py-3">

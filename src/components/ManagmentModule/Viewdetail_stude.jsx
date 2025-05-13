@@ -17,26 +17,26 @@ useEffect(()=>{
     managementedit();
 },[])
   return (
-    <div>
+    <div >
       <Managmentnavbar />
 
-<div>
+<div className='md:ms-72' >
 
 
 {
     viewdetails.map((studentdetail)=>(
       <div>
-<div class="flex flex-col p-6  bg-white  mt-11">
-      <div class="grid grid-cols-2">
-        <div class="grid grid-cols-2 ">
+<div class="flex flex-col py-6  bg-white ">
+      <div >
+        <div class="flex ">
           
          
-         <div className='ms-auto'>
+         <div className='ms-11'>
          <img src={profile} alt=""  className='w-32'/>
 
          </div>
-          <div class="ms-5">
-            <div class=" gap-3 items-center -mt-1 py-3">
+          <div class="ms-7">
+            <div class="  -mt-1 py-3">
               <p class="font cursor-pointer text-4xl">{studentdetail.stude_name}</p>
             </div>
             <div class="font-light text-md text-[#4b587c]">Welcome To Student Profile Page</div>

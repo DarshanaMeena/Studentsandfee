@@ -31,13 +31,13 @@ const[studentdata,setStudentdata] = useState([])
   return (
     <div>
       <Managmentnavbar />
-      <table className="w-full mt-11 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 m-auto text-center" >
+      <table className=" mt-5 md:ms-72 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400  text-center" >
           <thead className="  text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center ">
             <tr className=''>
               <th scope="col" className="px-6 py-5">
                 Id
               </th>
-              <th scope="col" className="px-6 py-5">
+              <th scope="col" className=" py-5">
                 Student Name
               </th>
               <th scope="col" className="px-6 py-5">
@@ -51,7 +51,7 @@ const[studentdata,setStudentdata] = useState([])
               {/* <th scope="col" className="px-6 py-5">
                DOB
               </th> */}
-              <th scope="col" className="px-6 py-5">
+              <th scope="col" className=" py-5">
                 Student Mobail Number
               </th>
               {/* <th scope="col" className="px-6 py-5">
@@ -80,7 +80,7 @@ const[studentdata,setStudentdata] = useState([])
 
 
                   <td className="px-4 py-4">{index + 1}</td>
-                  <td className="px-4 py-4">{data.stude_name} ({data.education})</td>
+                  <td className=" py-4">{data.stude_name} ({data.education})</td>
                   <td className="px-4 py-4">{data.stude_fname}</td>
                   {/* <td className="px-4 py-4">{data.stude_email}</td> */}
                   {/* <td className="px-4 py-4">{moment(data.stude_dob).format('DD/MM/YYYY')}</td> */}
@@ -88,9 +88,9 @@ const[studentdata,setStudentdata] = useState([])
                   {/* <td className="px-4 py-4">{data.stude_pnum}</td> */}
                   <td className="px-4 py-4">{data.gender}</td>
                   {/* <td className="px-4 py-4">{data.category}</td> */}
-                  <td className="px-4 py-4">{data.village_name} {data.city_name} </td>
+                  <td className=" py-4">{data.village_name} {data.city_name} </td>
                  <Link to={`/viewdetail/${data.stud_id}`}>
-                 <td className="px-4 py-4">
+                 <td className=" py-4">
                  <button className='bg-blue-800 w-[150px] text-white p-2 rounded mt-[10px] ms-[10px] cursor-pointer '>View Detail</button>
                   </td>
                   </Link> 

@@ -23,7 +23,7 @@ function Admin() {
        if(reuslt.length > 0) {
         // console.log((reuslt[0]['role']))
         localStorage.setItem('role','admin')
-        redirect('/adminnav')
+        redirect('/admindashboard')
         localStorage.setItem('loginData',reuslt);
         localStorage.setItem('role',1)
         // console.log('login success')
