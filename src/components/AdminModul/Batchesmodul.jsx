@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Managmentnavbar from '../Managmentnavbar';
 import Adminnavbar from '../Adminnavbar';
+import moment from 'moment';
 
 import ToastMsg from '../../Hook/ToastMsg';
 
@@ -59,31 +60,7 @@ setGetbatches(batchdata);
       
 
       <div>
-      {/* <div className='grid md:grid-cols-4 sm:grid-cols-1 sm: gap-2 grid-cols-1 mt-3'>
-               
-            
-            {
-              getbatch.map((batchdata)=>(
-                <div class="p-5 max-w-lg border border-indigo-200 rounded-2xl hover:shadow-xl hover:shadow-indigo-50 flex flex-col items-center"
-            >
-                <div class="mt-3">
-                <h5 class="font-bold text-2xl text-center">{batchdata.batch_name}</h5>
-                <p class="mt-2 text-gray-600 text-center"> {batchdata.course_id} </p>
-                <div className='text-center'>
-                <span class="mt-2 text-gray-600 text-xl">{batchdata.start_time}</span>TO
-                <span class="mt-2 text-gray-600 text-xl "> {batchdata.end_time}</span>
-                </div>
-                
-                <div class="mt-5 flex gap-4 items-center justify-center">
-                   <Link to={`/editbatches/${batchdata.id}`}><button type="button" class="inline-flex items-center rounded-md border border-transparent bg-blue-800 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-gray-900">EDIT</button></Link> 
-                    <button type="button" class="inline-flex items-center rounded-md border border-transparent bg-blue-800 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-gray-700" onClick={()=>{deletebatche(batchdata.id)}}>DELETE</button>
-                </div> 
-            </div>
-            </div>
-              ))
-            }
-            
-        </div> */}
+      
 <div className=' grid md:grid-cols-4 sm:grid-cols-1 sm: gap-2 grid-cols-1 mt-5 justify-center'>
 
 
@@ -128,7 +105,7 @@ setGetbatches(batchdata);
     </p>
     <p class=" text-gray-600 font-bold"> {batchdata.couses_name} </p>
     <p class="overflow-hidden leading-5 break-all text-zinc-600 max-h-10">
-    {batchdata.start_time} To {batchdata.end_time}
+    {moment(moment(new Date()).format('YYYY-MM-DD')+' ' +batchdata.start_time).format('hh:mm A')} To {moment(moment(new Date()).format('YYYY-MM-DD')+' ' +batchdata.end_time).format('hh:mm A')}
     </p>
   </div>
 

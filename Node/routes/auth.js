@@ -6,7 +6,7 @@ const multer  = require('multer');
 
 const upload = multer({ dest: '../uploads/' })
 
-const md5 = require("md5")
+const md5 = require("md5");
 
 const cors = require("cors");
 

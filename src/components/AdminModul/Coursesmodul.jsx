@@ -50,6 +50,9 @@ console.log('user role', userrole)
     <div class="flex items-center mb-3">
             <p className='font-display max-w-sm text-2xl font-bold leading-tight'>{getdata.couses_name}</p>
         </div>
+        <div class="flex items-center mb-3">
+            <p className='font-display max-w-sm text-xl  leading-tight'>{getdata.course_catagery}</p>
+        </div>
         <div>
             <p class="font-mono text-lg font-normal text-black">{getdata.duration}</p>
             <p className='opacity-75'>{getdata.fees}</p>

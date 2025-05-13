@@ -57,12 +57,14 @@ function App() {
         <Route path="studentregister" element={<RegistrationForm />} />
         <Route path="allstudentrecord" element={<Allstudentrecord />} />
         <Route path="viewdetail/:id" element={<Viewdetail_stude />}/>
-        <Route path="editstudentform/:id" element={<EditStudentForm />}/>
+        {/* <Route path="editstudentform/:id" element={<EditStudentForm />}/> */}
+        <Route path="editstudentform/:id" element={<Testing />}/>
+
         {/* Batches Module */}
         <Route path="batches" element={<Batchesmodul />} />
         <Route path="batchform" element={<Addbatches />} />
         <Route path="editbatches/:id" element={<Editbatchform />} />
-        <Route path="test" element={<Testing />} />
+        {/* <Route path="test/:id" element={<Testing />} /> */}
         {/* <Route path="editbatches/:id" element = {<BatchesEditform/>} /> */}
         
       </Routes>

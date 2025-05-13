@@ -66,6 +66,10 @@ function Addcourses() {
                     <h2 class="sm:text-xl text-[12px] font-bold mb-6">Create Courses</h2>
                     <form onSubmit={addcourses} id='submitForm'>
                         <div class="space-y-6">
+                           <div>
+                                <label for="title" class="text-sm xs:text-sm font-medium text-gray-700 mb-1 ">Course Catagery </label>
+                                <input type="text" id="title" class="h-[50px] rounded-[5px] text-sm xs:text-sm border border-[#D1D5DB] w-full px-2" name="coursecatagery" />
+                            </div>
                             <div>
                                 <label for="title" class="text-sm xs:text-sm font-medium text-gray-700 mb-1 ">Course Name </label>
                                 <input type="text" id="title" class="h-[50px] rounded-[5px] text-sm xs:text-sm border border-[#D1D5DB] w-full px-2" name="coursename" />
