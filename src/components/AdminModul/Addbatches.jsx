@@ -79,10 +79,23 @@ setGetcourse(batchdata);
     <div>
       <Managmentnavbar />
        <div>
-        <div>
+        <div className='md:ms-60'>
+          
           <input type='hidden' id='name'></input>
-        <div class="w-96 backdrop-blur-lg bg-opacity-60 rounded-lg shadow-lg p-5 m-auto mt-10">
-  <h3 class="text-2xl font-bold pb-5 text-center">Add Batch</h3>
+          
+        <div class="w-2xl backdrop-blur-lg bg-opacity-60 rounded-lg shadow-2xl p-8 m-auto mt-10">
+  {/* <h3 class="text-2xl font-bold pb-5 text-center uppercase">
+    Add Batches
+  <span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
+
+  </h3> */}
+<div class="relative inline-block mb-11">
+<span class="text-2xl md:text-3xl font-bold uppercase">
+  Add Batches
+</span>
+<span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
+</div>
+ 
   <form onSubmit={formsubmit} id='formbatch'>
   <input type="hidden" name='id' />
 
@@ -92,12 +105,12 @@ setGetcourse(batchdata);
         type="text"
         name='batchname'
         id="name"
-        class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full py-2.5 px-4"/>
+        class=" border border-gray-800 text-gray-900 text-sm rounded-lg  w-full py-4 px-4"/>
     </div>
     <div class="mb-4">
     <label for="name" class="block mb-2 text-sm font-medium">Course Name</label>
 
-      <select name="coursename" id="coursename" className='bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full py-2.5 px-4'>
+      <select name="coursename" id="coursename" className=' border border-gray-800 text-gray-900 text-sm rounded-lg  w-full py-4 px-4'>
         
         <option value="">--Select--</option>
         {
@@ -113,24 +126,19 @@ setGetcourse(batchdata);
       <input
         type="time" name='starttime'
         
-        class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full py-2.5 px-4"/>
+        class=" border border-gray-800 text-gray-900 text-sm rounded-lg  w-full py-4 px-4"/>
     </div>
     <div class="mb-4">
       <label for="password" class="block mb-2 text-sm font-medium">END Time</label>
       <input
         type="time" name='endtime'
         
-        class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full py-2.5 px-4"/>
+        class=" border border-gray-800 text-gray-900 text-sm rounded-lg  w-full py-4 px-4"/>
     </div>
-    <div>
-      <p class="text-red-500 pb-5"></p>
-    </div>
-    <div class="flex items-center justify-between mb-4">
-      <button
-        
-        class="text-white m-auto px-11 bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-300 font-medium rounded-lg text-sm py-2.5 px-5 w-full sm:w-auto cursor-pointer"
-      >
-        Create
+   
+    <div class="flex items-end  ">
+       <button class=" mt-5 md:ms-[470px] bg-orange-500 hover:bg-red-400 text-white font-bold py-2 px-8 border-b-4 border-orange-700 hover:border-red-500 rounded uppercase">
+       Create
       </button>
       
     </div>

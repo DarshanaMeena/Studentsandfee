@@ -100,7 +100,7 @@ routes.get("/userdata", upload.none(), (req,res)=>{
 
  routes.post('/search',upload.none(),(req,res) => {
     let serachval = req.body.seachusers;
-    mysql.query(`SELECT * FROM student WHERE role = 2 AND  name LIKE '%${serachval}%' or  email LIKE '%${serachval}%'`,(error,result) => {
+    mysql.query(`SELECT * FROM student WHERE role = 2 AND  name LIKE '%${serachval}%' or  email LIKE '%${serachval}%' or qualification LIKE '%${serachval}%' or address LIKE '%${serachval}%' or phone LIKE '%${serachval}%'`,(error,result) => {
         return res.json(result);
     })
 }) 

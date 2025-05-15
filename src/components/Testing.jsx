@@ -37,9 +37,10 @@ useEffect(()=>{
 },[])
 
 const metrics = [
-  { label: 'Courses', value1: totalCounts['totalcourses'], color: 'bg-red-500'},
-  { label: 'Students', value2: totalCounts['totalStudents'], color: 'bg-green-500' },
-  { label: 'Batches', value3: totalCounts['totalbatches'], color: 'bg-cyan-400' },
+  { label: 'Courses', value1: totalCounts['totalcourses'],plus1:'+', color: 'bg-red-500'},
+  { label: 'Students', value2: totalCounts['totalStudents'],plus2:'+', color: 'bg-green-500' },
+  { label: 'Batches', value3: totalCounts['totalbatches'],plus3:'+', color: 'bg-cyan-400' },
+  
 ];
 
   // function notify(){
@@ -60,7 +61,7 @@ const metrics = [
   class=" mt-5 div h-[8em] w-[15em] bg-white m-auto rounded-[1em] overflow-hidden relative group p-2 z-0 shadow-2xl"
 >
   <div
-    class="circle absolute h-[5em] w-[5em] -top-[2.5em] -right-[2.5em] rounded-full bg-blue-800 group-hover:scale-[800%] duration-500 z-[-1] op"
+    class="circle absolute h-[10em] w-[2.5em] -top-[1em] -right-[1.5em] rounded-full bg-blue-800 group-hover:scale-[1700%] duration-500 z-[-1] op"
   ></div>
 
   <button
@@ -69,7 +70,7 @@ const metrics = [
     {
         metrics.map((item, idx) => (
           <div>
-<div className="text-4xl font-bold">{item.value1}</div> 
+<div className="text-3xl font-semibold font-sans">{item.value1}{item.plus1}</div> 
 <span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
           </div>
                       
@@ -78,12 +79,12 @@ const metrics = [
     {/* <i class="fa-solid fa-arrow-right"></i> */}
   </button>
   <div className='flex gap-4'>
-<h1 class="z-20 font-bold font-Poppin group-hover:text-white duration-500 text-5xl">
+<h1 class="z-20 font-bold font-Poppin text-gray-800 group-hover:text-white duration-500 text-5xl">
     <i class="fa-solid fa-graduation-cap"></i>
   </h1>
 
   <h1
-    class="z-20 mt-3 font-bold font-Poppin uppercase group-hover:text-white duration-500 text-[1.5em]"
+    class="m z-30  font-semibold font-Poppin uppercase group-hover:text-white duration-500 text-2xl"
   >Total
     Course
   </h1>
@@ -97,7 +98,7 @@ const metrics = [
   class=" mt-5 div h-[8em] w-[15em] bg-white m-auto rounded-[1em] overflow-hidden relative group p-2 z-0 shadow-2xl"
 >
   <div
-    class="circle absolute h-[5em] w-[5em] -top-[2.5em] -right-[2.5em] rounded-full bg-blue-400 group-hover:scale-[800%] duration-500 z-[-1] op"
+    class="circle absolute h-[10em] w-[2.5em] -top-[1em] -right-[1.5em] rounded-full bg-cyan-800 group-hover:scale-[1700%] duration-500 z-[-1] op"
   ></div>
 
   <button
@@ -106,7 +107,7 @@ const metrics = [
     {
         metrics.map((item, idx) => (
           <div>
-<div className="text-4xl font-bold">{item.value2}</div> 
+<div className="text-3xl font-semibold font-sans">{item.value2}{item.plus2}</div> 
 <span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
           </div>
                       
@@ -115,12 +116,12 @@ const metrics = [
     {/* <i class="fa-solid fa-arrow-right"></i> */}
   </button>
   <div className='flex gap-4'>
-<h1 class="z-20 font-bold font-Poppin group-hover:text-white duration-500 text-5xl">
+<h1 class="z-20 font-bold font-Poppin text-gray-800 group-hover:text-white duration-500 text-5xl">
     <i class="fa-solid fa-users"></i>
   </h1>
 
   <h1
-    class="z-20 mt-3 font-bold font-Poppin uppercase group-hover:text-white duration-500 text-[1.5em]"
+    class="m z-30 font-semibold font-Poppin uppercase group-hover:text-white duration-500 text-2xl"
   >Total
     Student
   </h1>
@@ -134,7 +135,7 @@ const metrics = [
   class=" mt-5  div h-[8em] w-[15em] bg-white m-auto rounded-[1em] overflow-hidden relative group p-2 z-0 shadow-2xl"
 >
   <div
-    class="circle absolute h-[5em] w-[5em] -top-[2.5em] -right-[2.5em] rounded-full bg-pink-950 group-hover:scale-[800%] duration-500 z-[-1] op"
+    class="circle absolute h-[10em] w-[2.5em] -top-[1em] -right-[1.5em] rounded-full bg-pink-700 group-hover:scale-[1700%] duration-500 z-[-1] op"
   ></div>
 
   <button
@@ -143,7 +144,7 @@ const metrics = [
     {
         metrics.map((item, idx) => (
           <div>
-<div className="text-4xl font-bold">{item.value3} 
+<div className="text-3xl font-semibold font-sans">{item.value3}{item.plus3}
   </div> 
 <span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
           </div>
@@ -153,12 +154,12 @@ const metrics = [
     {/* <i class="fa-solid fa-arrow-right"></i> */}
   </button>
   <div className='flex gap-4'>
-<h1 class="z-20 font-bold font-Poppin text-gray group-hover:text-white duration-500 text-5xl">
+<h1 class="z-20 font-bold font-Poppin text-gray text-gray-800 group-hover:text-white duration-500 text-5xl">
     <i class="fa-solid fa-book-open-reader"></i>
   </h1>
 
   <h1
-    class="z-20 mt-3 font-bold font-Poppin uppercase group-hover:text-white duration-500 text-[1.5em]"
+    class="m z-30 font-semibold font-Poppin uppercase group-hover:text-white duration-500 text-2xl"
   >Total
     Batches
   </h1>
@@ -166,20 +167,21 @@ const metrics = [
   
 </div>
 </Link>
+
 <div
   class=" mt-5 div h-[8em] w-[15em] bg-white m-auto rounded-[1em] overflow-hidden relative group p-2 z-0 shadow-2xl"
 >
   <div
-    class="circle absolute h-[5em] w-[5em] -top-[2.5em] -right-[2.5em] rounded-full bg-orange-400 group-hover:scale-[800%] duration-500 z-[-1] op"
+    class="circle absolute h-[10em] w-[2.5em] -top-[1em] -left-[1.5em] rounded-full bg-orange-600 group-hover:scale-[1700%] duration-500 z-[-1] op"
   ></div>
 
   <button
-    class="text-[0.8em] absolute bottom-[2em] left-[1em] text-[#09020b] group-hover:text-[white] duration-500"
+    class="ms-5 text-[0.8em] absolute bottom-[2em] left-[1em] text-[#09020b] group-hover:text-[white] duration-500"
   >
     {
         metrics.map((item, idx) => (
           <div>
-<div className="text-4xl font-bold">{item.value1}</div> 
+<div className="text-3xl font-semibold font-sans">{item.value1}{item.plus1}</div> 
 <span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
           </div>
                       
@@ -188,12 +190,12 @@ const metrics = [
     {/* <i class="fa-solid fa-arrow-right"></i> */}
   </button>
   <div className='flex gap-4'>
-<h1 class="z-20 font-bold font-Poppin group-hover:text-white duration-500 text-5xl">
-    <i class="fa-solid fa-graduation-cap"></i>
+<h1 class=" ms-5 z-20 font-bold font-Poppin group-hover:text-white duration-500 text-5xl">
+    &#8377;
   </h1>
 
   <h1
-    class="z-20 mt-3 font-bold font-Poppin uppercase group-hover:text-white duration-500 text-[1.5em]"
+    class="m z-30 font-semibold font-Poppin uppercase group-hover:text-white duration-500 text-2xl"
   >Upcoming EMI'S
   </h1>
   </div>
@@ -203,17 +205,17 @@ const metrics = [
   class=" mt-5 div h-[8em] w-[15em] bg-white m-auto rounded-[1em] overflow-hidden relative group p-2 z-0 shadow-2xl"
 >
   <div
-    class="circle absolute h-[5em] w-[5em] -top-[2.5em] -right-[2.5em] rounded-full bg-red-600 group-hover:scale-[800%] duration-500 z-[-1] op"
+    class="circle absolute h-[10em] w-[2.5em] -top-[1em] -left-[1.5em] rounded-full bg-rose-600 group-hover:scale-[1700%] duration-500 z-[-1] op"
   ></div>
 
   <button
-    class="text-[0.8em] absolute bottom-[2em] left-[1em] text-[#09020b] group-hover:text-[white] duration-500"
+    class="ms-5 text-[0.8em] absolute bottom-[2em] left-[1em] text-[#09020b] group-hover:text-[white] duration-500"
   >
     {
         metrics.map((item, idx) => (
           <div>
-<div className="text-4xl font-bold">{item.value1}</div> 
-<span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
+<div className="text-3xl font-semibold font-sans">{item.value1}{item.plus1}</div> 
+<span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full "></span>
           </div>
                       
                        
@@ -221,12 +223,12 @@ const metrics = [
     {/* <i class="fa-solid fa-arrow-right"></i> */}
   </button>
   <div className='flex gap-4'>
-<h1 class="z-20 font-bold font-Poppin group-hover:text-white duration-500 text-5xl">
-    <i class="fa-solid fa-graduation-cap"></i>
+<h1 class=" ms-5 z-20 font-bold font-Poppin group-hover:text-white duration-500 text-5xl">
+    &#8377;
   </h1>
 
   <h1
-    class="z-20 mt-3 font-bold font-Poppin uppercase group-hover:text-white duration-500 text-[1.5em]"
+    class="m z-30 font-semibold font-Poppin uppercase group-hover:text-white duration-500 text-2xl"
   >Pending
     EMI'S
   </h1>
@@ -237,16 +239,16 @@ const metrics = [
   class=" mt-5 div h-[8em] w-[15em] bg-white m-auto rounded-[1em] overflow-hidden relative group p-2 z-0 shadow-2xl"
 >
   <div
-    class="circle absolute h-[5em] w-[5em] -top-[2.5em] -right-[2.5em] rounded-full bg-green-600 group-hover:scale-[800%] duration-500 z-[-1] op"
+    class="circle absolute h-[10em] w-[2.5em] -top-[1em] -left-[1.5em] rounded-full bg-green-800 group-hover:scale-[1700%] duration-500 z-[-1] op"
   ></div>
 
   <button
-    class="text-[0.8em] absolute bottom-[2em] left-[1em] text-[#09020b] group-hover:text-[white] duration-500"
+    class=" ms-5 text-[0.8em] absolute bottom-[2em] left-[1em] text-[#09020b] group-hover:text-[white] duration-500"
   >
     {
         metrics.map((item, idx) => (
           <div>
-<div className="text-4xl font-bold">{item.value1}</div> 
+<div className=" text-3xl font-semibold font-sans">{item.value1}{item.plus1}</div> 
 <span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
           </div>
                       
@@ -255,38 +257,73 @@ const metrics = [
     {/* <i class="fa-solid fa-arrow-right"></i> */}
   </button>
   <div className='flex gap-4'>
-<h1 class="z-20 font-bold font-Poppin group-hover:text-white duration-500 text-5xl">
-    <i class="fa-solid fa-graduation-cap"></i>
+<h1 class=" ms-5 z-20 font-bold font-Poppin group-hover:text-white duration-500 text-5xl">
+   &#8377;
   </h1>
 
   <h1
-    class="z-20 mt-3 font-bold font-Poppin uppercase group-hover:text-white duration-500 text-[1.5em]"
+    class="m z-30 font-semibold font-Poppin uppercase group-hover:text-white duration-500 text-2xl"
   >Paid
     EMI'S
   </h1>
   </div>
   
 </div>
+{/* <Link to='/allstudentrecord'>
+<div
+  class=" mt-5 div h-[8em] w-[15em] bg-white m-auto rounded-[1em] overflow-hidden relative group p-2 z-0 shadow-2xl"
+>
+  <div
+    class="circle absolute h-[10em] w-[2.5em] -top-[1em] -right-[1.5em] rounded-full bg-cyan-800 group-hover:scale-[1700%] duration-500 z-[-1] op"
+  ></div>
 
+  <button
+    class="text-[0.8em] absolute bottom-[2em] left-[1em] text-[#09020b] group-hover:text-[white] duration-500"
+  >
+    {
+        metrics.map((item, idx) => (
+          <div>
+<div className="text-3xl font-semibold font-sans">{item.value2}{item.plus2}</div> 
+<span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
+          </div>
+                      
+                       
+        ))}
+ 
+  </button>
+  <div className='flex gap-4'>
+<h1 class="z-20 font-bold font-Poppin text-gray-800 group-hover:text-white duration-500 text-4xl">
+    <i class="fa-solid fa-user-gear"></i>
+  </h1>
+
+  <h1
+    class=" z-30 font-semibold font-Poppin uppercase group-hover:text-white duration-500 text-xl"
+  >Total
+    Managment
+  </h1>
+  </div>
+  
+</div>
+</Link> */}
 
     </div>
     </div>
    
-    <div className='grid grid-cols-1 md:ms-70
+    <div className='grid grid-cols-1 md:ms-64
     '>
 
       
-      <div className="  m-auto px-4">
+      <div className="m-auto px-4 ">
      
      
 
-      <div className="relative   rounded-lg  overflow-hidden flex flex-col md:flex-row items-center justify-between">
+      <div className="  relative rounded-lg  overflow-hidden flex flex-col md:flex-row items-center justify-between">
          <div className='flex justify-between '>
       {/* <div className='w-96'>
         <img src={img} alt="" />
       </div> */}
-<div className='mb-10 '>
-     <div style={{ marginTop: 20 }} className='bg-blue-500 w-full py-3 text-white text-center text-2xl'>
+<div className='mb-10 w-full'>
+     <div style={{ marginTop: 20 }} className='bg-blue-500 py-3 text-white text-center text-2xl'>
         <strong>{formatDate(selectedDate)}</strong>
         {/* <p>{runData[formatDate(selectedDate)] || 'No run logged'}</p> */}
       </div>

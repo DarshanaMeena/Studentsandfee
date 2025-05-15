@@ -1,94 +1,100 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 function AdminHomePage() {
   return (
     <div>
      
      
-{/* <div class="grid grid-cols-2 w-[700px] gap-2 max-[500px]:grid-cols-1 px-3 mt-11">
-  <div
-    class="group w-full rounded-lg bg-[#673ab7] p-5 transition relative duration-300 cursor-pointer hover:translate-y-[3px] hover:shadow-[0_-8px_0px_0px_#2196f3]"
-  >
-    <p class="text-white text-2xl">2000</p>
-    <p class="text-white text-sm">lorem</p>
-    <svg
-      xml:space="preserve"
+<header className=''>
+                 <nav
+                    className="
+                      flex flex-wrap
+                      items-center
+                      w-full
+                      py-4
+                      md:py-[0px]
+                      px-10
+                      text-lg text-gray-700
+                     border-b-1
+                     bg-black
+                      shadow-xl
+                    "
+                  >
+                   
+                   <div className=''>
+                            <img src={paramlogo} alt="" className='w-24 m-auto '/>
+                    
+                   </div>
+                     <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        id="menu-button"
+                        className="h-6 w-6 m-auto cursor-pointer md:hidden block"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        onClick={getnavbar}
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16"
+                        />
+                      </svg>
+                   
+                   <div className="hidden w-full md:flex md:items-center md:w-auto ms-[250px]" id="menu">
+                      <ul
+                        className="
+                          pt-4
+                          text-base text-gray-700
+                          md:flex
+                          md:justify-between 
+                          md:pt-0
+                          md:hidden"
+                          
+                      >
+                        <li>
+                          <Link to={'/managmentmodul'} className="md:p-4 py-2 block hover:text-purple-400" href="#"
+                            >Managment</Link>
+                        </li>
+                        <li>
+                          <Link to={'/studentregister'} className="md:p-4 py-2 block hover:text-purple-400" href="#"
+                            >Student Registration</Link>
+                        </li>
+                        <li>
+                          <Link to={"/batches"} className="md:p-4 py-2 block hover:text-purple-400" href="#"
+                            >Batches</Link>
+                        </li>
+                          
+                        <li>
+                                    <Link to="/coursesmodule" className="md:p-4 py-2 block hover:text-purple-400">Courses</Link>
+                                    </li>
+                        <li>
+                          <a className="md:p-4 py-2 block hover:text-purple-400" href="#">Fees</a>
+                        </li>
+                        <li>
+                          {/* <button className='border border-2 bg-lime-800 '> */}
+                         
+                          {/* </button> */}
+                          
+                        </li>
+                      </ul>
+                    
+      <button
+        class=" md:ms-[700px] group flex items-center justify-start  h-11 text-white font-bold  px-3 bg-rose-600 rounded cursor-pointer relative overflow-hidden transition-all duration-200 shadow-lg active:translate-y-1"
+      >
+         <svg class="w-4 h-5" viewBox="0 0 512 512" fill="white">
+            <path
+              d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
+            ></path>
+            
+          </svg>
+          <span className='ms-1'>Logout</span>
+      </button>
       
-      viewBox="0 0 512 512"
-      y="0"
-      x="0"
-      height="36"
-      width="36"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      class="group-hover:opacity-100 absolute right-[10%] top-[50%] translate-y-[-50%] opacity-20 transition group-hover:scale-110 duration-300"
-    >
-      <g>
-        <path
-          class=""
-          data-original="#000000"
-          opacity="1"
-          fill="#ffffff"
-          d="M135.169 91.902c16.83 0 30.474-13.649 30.474-30.485 0-11.22-13.533-36.418-22.563-51.981-3.524-6.075-12.297-6.075-15.822 0-9.029 15.563-22.563 40.761-22.563 51.981 0 16.836 13.644 30.485 30.474 30.485zM256 91.902c16.83 0 30.474-13.649 30.474-30.485 0-11.22-13.533-36.418-22.563-51.981-3.524-6.075-12.297-6.075-15.822 0-9.029 15.563-22.563 40.761-22.563 51.981 0 16.836 13.643 30.485 30.474 30.485zM376.83 91.902c16.83 0 30.474-13.649 30.474-30.485 0-11.22-13.533-36.418-22.563-51.981-3.525-6.075-12.297-6.075-15.822 0-9.029 15.563-22.563 40.761-22.563 51.981 0 16.836 13.644 30.485 30.474 30.485zM118.391 116.951c-7.454 0-13.497 6.045-13.497 13.502v108.924h60.55V130.454c0-7.457-6.042-13.502-13.497-13.502h-33.556zM239.221 116.951c-7.454 0-13.497 6.045-13.497 13.502v108.924h60.55V130.454c0-7.457-6.043-13.502-13.497-13.502h-33.556zM360.052 116.951c-7.454 0-13.497 6.045-13.497 13.502v108.924h60.55V130.454c0-7.457-6.043-13.502-13.497-13.502h-33.556zM66.25 356.095a26.11 26.11 0 0 0 7.425-1.08l37.866-11.209c12.377-3.664 25.284-5.496 38.19-5.496s25.813 1.832 38.19 5.496l29.888 8.848c12.377 3.664 25.284 5.496 38.19 5.496s25.813-1.832 38.19-5.496l29.888-8.848c12.377-3.664 25.284-5.496 38.19-5.496s25.813 1.832 38.19 5.496l37.866 11.209a26.146 26.146 0 0 0 7.425 1.08c12.118 0 22.787-8.481 22.787-19.746v-38.672c0-12.82-12.02-23.213-26.848-23.213H70.312c-14.828 0-26.848 10.393-26.848 23.213v38.672c0 11.265 10.67 19.746 22.786 19.746zM497 477.12h-40.946v-91.989a56.002 56.002 0 0 1-10.305.964 56.132 56.132 0 0 1-15.941-2.313l-37.866-11.209c-9.553-2.828-19.537-4.262-29.674-4.262s-20.121 1.434-29.674 4.262l-29.888 8.848c-15.086 4.466-30.799 6.73-46.705 6.73s-31.62-2.264-46.706-6.73l-29.888-8.848c-9.553-2.828-19.537-4.262-29.674-4.262s-20.121 1.434-29.674 4.262l-37.866 11.209a56.138 56.138 0 0 1-15.941 2.314c-3.487 0-6.935-.333-10.305-.964v91.989H15c-8.284 0-15 6.716-15 15s6.716 15 15 15h482c8.284 0 15-6.716 15-15s-6.716-15.001-15-15.001z"
-        ></path>
-      </g>
-    </svg>
-  </div>
-  <div
-    class="group w-full rounded-lg bg-[rgb(41,49,79)] p-5 transition relative duration-300 cursor-pointer hover:translate-y-[3px] hover:shadow-[0_-8px_0px_0px_rgb(244,67,54)]"
-  >
-    <p class="text-white text-2xl">1999</p>
-    <p class="text-white text-sm">lorem</p>
-
-    <svg
-      class="group-hover:opacity-100 absolute right-[10%] top-[50%] translate-y-[-50%] opacity-20 transition group-hover:scale-110 duration-300"
-      xml:space="preserve"
-
-      viewBox="0 0 405.333 405.333"
-      y="0"
-      x="0"
-      height="36"
-      width="36"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g>
-        <path
-          class=""
-          data-original="#000000"
-          opacity="1"
-          fill="#ffffff"
-          d="M202.667 0C117.333 0 32 10.667 32 85.333V288c0 41.173 33.493 74.667 74.667 74.667l-32 32v10.667h47.573l42.667-42.667h80.427L288 405.333h42.667v-10.667l-32-32c41.173 0 74.667-33.493 74.667-74.667V85.333C373.333 10.667 296.96 0 202.667 0zm-96 320c-17.707 0-32-14.293-32-32s14.293-32 32-32 32 14.293 32 32-14.294 32-32 32zm74.666-149.333H74.667V85.333h106.667v85.334zM298.667 320c-17.707 0-32-14.293-32-32s14.293-32 32-32 32 14.293 32 32-14.294 32-32 32zm32-149.333H224V85.333h106.667v85.334z"
-        ></path>
-      </g>
-    </svg>
-  </div>
-</div> */}
-
-
-{/* <div class="cards">
-    <div class="card red">
-        <p class="tip">Hover Me</p>
-        <p class="second-text">Lorem Ipsum</p>
-    </div>
-    <div class="card blue">
-        <p class="tip">Hover Me</p>
-        <p class="second-text">Lorem Ipsum</p>
-    </div>
-    <div class="card green">
-        <p class="tip">Hover Me</p>
-        <p class="second-text">Lorem Ipsum</p>
-    </div>
-</div> */}
-
-{/* <div className=' bg-blue-800 h-40 '>
-<main class="container mx-auto px-4 py-8">
-        <h1 class="text-4xl font-bold text-white mb-4">Welcome to Our Website</h1>
-        <p class="text-white">This is the main content area. The navbar above has beautiful animations and effects.</p>
-    </main>
-</div> */}
+                    </div>
+                </nav>
+              </header>
 
 
     </div>

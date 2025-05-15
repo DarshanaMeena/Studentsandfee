@@ -9,6 +9,7 @@ import Adminnavbar from '../Adminnavbar';
 import moment from 'moment';
 
 import ToastMsg from '../../Hook/ToastMsg';
+import BatchModal from '../ManagmentModule/BatchModal';
 
 function Batchesmodul() {
 
@@ -28,7 +29,7 @@ setGetbatches(batchdata);
         
     },[])
     async function deletebatche(bid) {
-      let conf = confirm('are you sure you want to delete this course!')
+      let conf = confirm('are you sure you want to delete this Batch ❌')
       if(conf==false){
         return false;
       }
@@ -37,6 +38,17 @@ setGetbatches(batchdata);
       getbatchess();
       
      }
+
+     const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div>
   
@@ -44,16 +56,18 @@ setGetbatches(batchdata);
      
     { userrole.current == 1 ? <Adminnavbar /> : <Managmentnavbar/> }
 
-    <div className='grid  justify-end mr-5 mt-5'>
+    <div className='grid  justify-center md:ms-70 mr-5 mt-5'>
         
     
-     <div className='grid grid-cols-2 justify-end mr-5 mt-5 gap-3'>
-      <div>
-      <Link to='/allstudentrecord'> <button className='bg-blue-500 w-full text-white p-2 rounded mt-[10px] ms-[10px] cursor-pointer '>All Student Record</button></Link>
-      </div>
+     <div className=' justify-end mr-5 mt-5 gap-3'>
+      {/* 
+       */}
      
      <div className='text-end'>
-     <Link to='/batchform'> <button className='bg-blue-500 w-full text-white p-2 rounded mt-[10px] ms-[10px] cursor-pointer '>Add Batches</button></Link>
+     <Link to='/batchform'>  <button class=" mt-5 text-end  bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+       Add Batches
+      </button>
+     </Link>
      </div>
         
       </div>
@@ -61,49 +75,29 @@ setGetbatches(batchdata);
 
       <div>
       
-<div className=' grid md:grid-cols-4 sm:grid-cols-1 sm: gap-2 grid-cols-1 mt-5 justify-center'>
+
+<div className=' grid md:grid-cols-3 sm:grid-cols-1 sm:gap-2 grid-cols-1 mt-5 justify-center'>
 
 
 
 {
               getbatch.map((batchdata)=>(  
-                <div className='p-5 max-w  rounded-2xl  items-center'>    
-<divfulll
-  class="relative z-50 flex w-4/4 max-w-72 py-5 bg-white rounded-xl overflow-hidden shadow-2xl "
+                <div className='p-5 max-w rounded-2xl  items-center'>    
+<div 
+  class="relative  py-5 border border-2 border-blue-500 border-dashed px-11 rounded-bl-4xl overflow-hidden  " onClick={openModal}
 >
-  <svg width="16" height="96" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M 8 0 
-               Q 4 4.8, 8 9.6 
-               T 8 19.2 
-               Q 4 24, 8 28.8 
-               T 8 38.4 
-               Q 4 43.2, 8 48 
-               T 8 57.6 
-               Q 4 62.4, 8 67.2 
-               T 8 76.8 
-               Q 4 81.6, 8 86.4 
-               T 8 96 
-               L 0 96 
-               L 0 0 
-               Z"
-      fill="#51a2ff"
-      stroke="#51a2ff"
-      stroke-width="4"
-      stroke-linecap="round"
-    ></path>
-  </svg>
+
 
 <div>
 
                 <div>
-  <div class="mx-2.5 overflow-hidden w-full">
+  <div class=" w-full">
     <p
-      class="mt-1.5 text-xl font-bold text-blue-300 leading-8 mr-3 overflow-hidden text-ellipsis whitespace-nowrap"
+      class="mt-1.5 text-2xl uppercase font-bold text-blue-300 leading-8  text-ellipsis whitespace-nowrap"
     >
       {batchdata.batch_name}
     </p>
-    <p class=" text-gray-600 font-bold"> {batchdata.couses_name} </p>
+    <p class=" text-gray-700 font-bold"> {batchdata.couses_name} </p>
     <p class="overflow-hidden leading-5 break-all text-zinc-600 max-h-10">
     {moment(moment(new Date()).format('YYYY-MM-DD')+' ' +batchdata.start_time).format('hh:mm A')} To {moment(moment(new Date()).format('YYYY-MM-DD')+' ' +batchdata.end_time).format('hh:mm A')}
     </p>
@@ -133,7 +127,7 @@ setGetbatches(batchdata);
       ></path>
     </svg>
   </button> */}
-</divfulll>
+</div>
 </div>
  ))
 }
@@ -142,6 +136,14 @@ setGetbatches(batchdata);
                 
                
             </div>
+               <BatchModal isOpen={isModalOpen} onClose={closeModal}>
+        
+        <div className="mt-2">
+         Batch Name    
+        </div>
+      </BatchModal>
+
+
                </div>
       </div>
      

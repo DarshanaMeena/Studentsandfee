@@ -5,6 +5,9 @@ import { Link, useParams } from 'react-router-dom'
 import Managmentnavbar from '../Managmentnavbar'
 import moment from 'moment'
 import profile from '../../assets/profile.png'
+import StudentNavbar from '../../StudentNavbar'
+import Adminnavbar from '../Adminnavbar'
+import StudentOpenModal from './StudentOpenModal'
 function Viewdetail_stude() {
   const [viewdetails, setViewdetails] = useState([])
   const { id } = useParams();
@@ -16,11 +19,24 @@ function Viewdetail_stude() {
   useEffect(() => {
     managementedit();
   }, [])
+
+   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div >
-      <Managmentnavbar />
+      {
+        localStorage.getItem('role') == 1 ? <Adminnavbar/> : localStorage.getItem('role') == 2 ? <Managmentnavbar /> : <StudentNavbar/> 
+      }
 
-      <div>
+      <div className='md:ms-70 '>
 
 
         {
@@ -28,7 +44,7 @@ function Viewdetail_stude() {
             <div>
               <div class="flex flex-col p-6  bg-white  mt-11">
                 <div class="grid grid-cols-2">
-                  <div class="grid grid-cols-2 ">
+                  <div class="flex">
 
 
                     <div className='ms-auto'>
@@ -41,10 +57,27 @@ function Viewdetail_stude() {
                       </div>
                       <div class="font-light text-md text-[#4b587c]">Welcome To Student Profile Page</div>
                       <div>
-                        <Link to={`/editstudentform/${studentdetail.stud_id}`}>
+                         {
+        localStorage.getItem('role')  <= 2 ?  <Link to={`/editstudentform/${studentdetail.stud_id}`}>
                           <button type="button" className=" text-white inline-flex cursor-pointer items-center gap-1 rounded border border-slate-300 bg-gradient-to-b from-blue-400 to-blue-600 px-4 py-2 font-semibold hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-300 focus-visible:ring-offset-2 active:opacity-100" >
                             <ion-icon name="pencil-outline"></ion-icon>Edit
-                          </button></Link>
+                          </button></Link> : <button onClick={openModal} type="button" className=" text-white inline-flex cursor-pointer items-center gap-1 rounded border border-slate-300 bg-gradient-to-b from-blue-400 to-blue-600 px-4 py-2 font-semibold hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-300 focus-visible:ring-offset-2 active:opacity-100 cursor-not-allowed" >
+                            <ion-icon name="pencil-outline"></ion-icon>Edit
+                          </button>
+      }
+
+      <div>
+        <StudentOpenModal isOpen={isModalOpen} onClose={closeModal}>
+       
+        <div className="mt-2">
+          <p className="text-xl text-gray-800">
+          You Can Only View Your Personal Details, You Cannot Change.
+          </p>
+        </div>
+      </StudentOpenModal>
+
+      </div>
+                       
                       </div>
                     </div>
                   </div>
@@ -63,6 +96,7 @@ function Viewdetail_stude() {
                     <thead >
                       <tr className='border-b-1  border-gray-400'>
                         <th className='p-3 text-xl font-normal'>Student Name</th>
+                        
                         <td className='text-start'>{studentdetail.stude_name}</td>
                       </tr>
                       <tr className='border-b-1  border-gray-400'>

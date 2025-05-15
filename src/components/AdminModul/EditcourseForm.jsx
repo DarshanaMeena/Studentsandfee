@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import CallAjax from '../../Hook/CallAjax';
 import { useNavigate,useParams} from 'react-router-dom';
 import $ from 'jquery'
+import courseimg from '../../assets/co.avif'
 import Managmentnavbar from '../Managmentnavbar';
 
 function EditcourseForm() {
@@ -31,15 +32,25 @@ function EditcourseForm() {
   return (
     <div>
 
-        <Managmentnavbar />
-      <section class="bg-white p-1 xs:p-8 mt-11">
-                <div class=" max-w-96 sm:max-w-4xl mx-auto border border-blue-900 rounded-lg p-8 w-xl shadow">
-                    <h2 class="sm:text-xl text-[12px] font-bold mb-6">Create Courses</h2>
+        {/* <Managmentnavbar /> */}
+         <div className='grid grid-cols-2'>
+                  <div className=''>
+                    <img src={courseimg} alt="" className='w-full h-screen '/>
+                  </div>
+                  <div>
+      <section class="bg-white p-1 xs:p-8 ">
+                <div class=" mt-2 max-w-96 sm:max-w-4xl mx-auto rounded-lg p-8 w-xl shadow">
+                    <div class="relative inline-block ">
+  <span class="text-2xl md:text-3xl font-bold uppercase">
+   Edit Courses
+  </span>
+  <span class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-600 rounded-full"></span>
+</div>
 
                    {
                     editcourse.map((editdata)=>(
                         <form id='EditForm' onSubmit={submitcourseForm}>
-                        <div class="space-y-6">
+                        <div class="space-y-6 mt-5">
                             <input type="hidden" name='id' value={editdata.id}/>
                              <div>
                                 <label for="title" class="text-sm xs:text-sm font-medium text-gray-700 mb-1 ">Course Name </label>
@@ -64,7 +75,7 @@ function EditcourseForm() {
                             </div>
 
                         </div>
-                        <div class="mt-8 pt-6  flex justify-end">
+                        <div class="mt-5  flex justify-end">
                             <button  class=" sm:w-[86px] w-full h-[50px] text-xs sm:text-base bg-blue-900 rounded-[5px] p-[13px_25px] gap-[10px] text-white">Edit</button>
                         </div>
                     </form>
@@ -72,6 +83,8 @@ function EditcourseForm() {
                    }
                 </div>
             </section>
+            </div>
+            </div>
     </div>
   )
 }

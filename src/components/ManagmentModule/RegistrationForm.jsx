@@ -11,6 +11,7 @@ import moment from 'moment';
 import { ToastContainer, toast } from 'react-toastify';
 import Adddistric from './Adddistric';
 import { FaUserShield, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import Adminnavbar from '../Adminnavbar';
 function RegistrationForm() {
   const [selectbetch, setSelectbetch] = useState([])
   const [selectcourse, setSelectcourse] = useState([])
@@ -25,6 +26,7 @@ function RegistrationForm() {
   
   const formRef = useRef(null);
   const redirect = useNavigate()
+  const userrole = useRef(localStorage.getItem('role'));
   async function stud_formdata(ev) {
     ev.preventDefault();
 
@@ -166,6 +168,7 @@ function RegistrationForm() {
           minlength: 10,
           maxlength: 10,
         },
+
         gender: {
           required: true,
         },
@@ -181,6 +184,18 @@ function RegistrationForm() {
         address: {
           required: true,
         },
+        course: {
+          required:true,
+        },
+        password: {
+          required: true,
+          minlength:6,
+        },
+         cpassword: {
+          required: true,
+          minlength:6,
+          equalTo : '#mainpass'
+        }
 
       },
       messages: {
@@ -203,19 +218,45 @@ function RegistrationForm() {
 
   return (
     <div>
-      <ToastContainer className='changeposition' />
+     
 
       <div>
-        <Managmentnavbar />
+        <div> { userrole.current == 1 ? <Adminnavbar /> : <Managmentnavbar/> } </div>
       </div>
-      <div class="flex items-center justify-center p-12">
+      <div class="flex items-center justify-center p-12  md:ms-70 ">
 
-        <div class="mx-auto w-7xl max-w-[750px] bg-white shadow-2xl  border-gray-200 border-1  rounded-br-3xl rounded-tl-3xl">
+        <div class="mx-auto w-7xl max-w-[950px] bg-white shadow-2xl   rounded-br-3xl rounded-tl-3xl">
+<div class="relative max-w-4xl mx-auto overflow-hidden rounded-t-xl shadow-md border-2 border-blue-300">
+<div class="relative">
+  {/* <!-- Layered Blue Waves (Top Border) --> */}
+  <svg viewBox="0 0 1440 200" class="w-full h-28 rotate-360" preserveAspectRatio="none">
+    {/* <!-- Back Layer (Dark Blue) --> */}
+    
+    {/* <!-- Middle Layer --> */}
+    <path fill="#0ea5e9" fill-opacity="1"
+      d="M0,180L80,170.7C160,161,320,139,480,128C640,117,800,117,960,128C1120,139,1280,160,1360,170.7L1440,181L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+    </path>
+    {/* <!-- Front Layer --> */}
+    
+  </svg>
+</div>
 
-          <div className='w-xs ml-auto'>
-            <h1 className=' text-xl text-center bg-gradient-to-r from-blue-700 to-blue-500 px-11 py-3 font-bold text-white hover:from-blue-800 hover:to-white-500 rounded-br-3xl  hover:bg-blue-800 py-4 '> Student Registration</h1>
-          </div>
-          <form onSubmit={stud_formdata} id='RegisterForm' className=' py-9 px-9 '>
+<div class="flex items-center mb-11 justify-center my-6">
+  {/* <!-- Left Dashed Line --> */}
+  <div class="flex-grow border-t border-dashed border-cyan-400"></div>
+
+  {/* <!-- Label --> */}
+  <span class="px-4 py-3 mx-4 bg-sky-500 font-bold text-white  rounded shadow text-lg">
+    REGISTRATION FORM
+  </span>
+
+  {/* <!-- Right Dashed Line --> */}
+  <div class="flex-grow border-t border-dashed border-cyan-400"></div>
+</div>
+
+{/* <!-- Page Content Goes Here --> */}
+
+<form onSubmit={stud_formdata} id='RegisterForm' className=' px-5 '>
 
             <div class="-mx-3 flex flex-wrap">
               <div class="w-full px-3 sm:w-1/2">
@@ -265,6 +306,7 @@ function RegistrationForm() {
                     <input
                       type={showPassword ? "text" : "password"}
                       placeholder="Password"
+                      id='mainpass'
                       className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md"
                       name='password'
                     />
@@ -281,7 +323,7 @@ function RegistrationForm() {
                 <div class="w-full px-3 sm:w-1/2">
                   <div class="mb-5">
                     <label for="date" class="mb-3 block text-base font-medium text-[#07074D]">
-                      Conform Password
+                      confirm Password
 
                     </label>
                     <div className="relative">
@@ -290,7 +332,7 @@ function RegistrationForm() {
                       type={showCpassword ? "text" : "password"}
                       placeholder=" Conform Password"
                       className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md"
-                      name='password'
+                      name='cpassword'
                     />
 
                     <button
@@ -367,8 +409,8 @@ function RegistrationForm() {
                     </label>
                     <select name="gender" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md" >
                       <option value="">Select Gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
                     </select>
                   </div>
                 </div>
@@ -571,22 +613,54 @@ function RegistrationForm() {
 
             </Addvillage>
             <div>
-              <button type='submit'
-                class="hover:shadow-form w-full rounded-md bg-gradient-to-r from-blue-700 to-blue-500 px-11 py-3 text-white hover:from-blue-800 hover:to-white-500 py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                Register
-              </button>
+              
               {/* modal */}
 
 
               {/* <!-- Modal toggle --> */}
 
 
-
+  <button type='submit'
+                class="hover:shadow-form w-full rounded-md bg-gradient-to-r from-blue-400 to-blue-400 px-11  text-white hover:from-blue-500 hover:to-white-500 py-2  px-5 text-center text-base font-semibold text-white outline-none text-lg">
+                Register
+              </button>
             </div>
+           
           </form>
+  {/* <!-- Layered Blue Waves using SVG --> */}
+  <svg viewBox="0 0 1440 200" class="w-full h-48 border-t-0 border-1 border-blue-300" preserveAspectRatio="none">
+    {/* <!-- Back Layer (Dark Blue) --> */}
+    <path fill="#0284c7" fill-opacity="1"
+      d="M0,160L60,149.3C120,139,240,117,360,122.7C480,128,600,160,720,154.7C840,149,960,107,1080,90.7C1200,75,1320,85,1380,90.7L1440,96L1440,200L1380,200C1320,200,1200,200,1080,200C960,200,840,200,720,200C600,200,480,200,360,200C240,200,120,200,60,200L0,200Z">
+    </path>
+    {/* <!-- Middle Layer --> */}
+    <path fill="#0ea5e9" fill-opacity="1"
+      d="M0,180L80,170.7C160,161,320,139,480,128C640,117,800,117,960,128C1120,139,1280,160,1360,170.7L1440,181L1440,200L1360,200C1280,200,1120,200,960,200C800,200,640,200,480,200C320,200,160,200,80,200L0,200Z">
+    </path>
+    {/* <!-- Front Layer --> */}
+    <path fill="#38bdf8" fill-opacity="1"
+      d="M0,192L48,181.3C96,171,192,149,288,138.7C384,128,480,128,576,144C672,160,768,192,864,197.3C960,203,1056,181,1152,170.7C1248,160,1344,160,1392,160L1440,160L1440,200L1392,200C1344,200,1248,200,1152,200C1056,200,960,200,864,200C768,200,672,200,576,200C480,200,384,200,288,200C192,200,96,200,48,200L0,200Z">
+    </path>
+  </svg>
+</div>
+
+
+  {/* <!-- Header Content --> */}
+ 
+
+
+          {/* <div className='w-full'>
+            <h1 className=' text-xl text-center bg-gradient-to-r from-blue-700 to-blue-500 px-11 py-3 font-bold text-white hover:from-blue-800 hover:to-white-500 rounded-tl-3xl  hover:bg-blue-800 py-4 '> Student Registration</h1>
+          </div> */}
+          
+
+
         </div>
+  
       </div>
     </div>
+    
+    // </div>
   )
 }
 

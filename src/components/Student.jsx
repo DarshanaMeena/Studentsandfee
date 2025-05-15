@@ -7,6 +7,7 @@ import { useEffect,useState } from 'react';
 import 'jquery-validation';
 import image from '../assets/student.webp'
 import { FaUserShield, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import StudentNavbar from '../StudentNavbar';
 
 function Student() {
     const [showPassword, setShowPassword] = useState(false);
@@ -20,8 +21,11 @@ function Student() {
        let reuslt = await CallAjax('http://localhost:4050/studentlogin', formdata, 'POST');
     //    console.log(reuslt)
        if(reuslt.length > 0) {
-        if(!localStorage.getItem('loginData')&& localStorage.getItem('role') != 3)
-        redirect(`/viewdetail/${reuslt[0]['stud_id']}`)
+
+        localStorage.setItem('loginData', reuslt);
+        localStorage.setItem('role', 3);
+        //if(!localStorage.getItem('loginData')&& localStorage.getItem('role') == 3)
+        redirect(`/viewdetail/${reuslt[0].stud_id}`)
        
         // console.log('login success')
        } else {
@@ -38,8 +42,7 @@ function Student() {
               },
               password : {
                 required : true,
-                maxlength:5,
-                minlength:5,
+               
             },
     
           },
@@ -59,6 +62,7 @@ function Student() {
       },[])
   return (
     <div>
+      
       <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
             <div className="bg-white shadow-lg rounded-xl flex flex-col md:flex-row overflow-hidden max-w-4xl w-full">
               
@@ -90,7 +94,7 @@ function Student() {
                             <div className="relative">
                               <input
                                 type="text"
-                                placeholder="Admin Username"
+                                placeholder="Student Username"
                                 className="w-full px-12 py-3 bg-gray-100 rounded-md focus:outline-none"
                                 name='email'
                               />
@@ -116,11 +120,7 @@ function Student() {
                             </div>
                   
                             {/* Forgot Password */}
-                            <div className="text-right text-sm">
-                              <a href="#" className="text-blue-600 hover:underline">
-                                Forgot Password?
-                              </a>
-                            </div>
+                            
                   
                             {/* Submit */}
                             <button

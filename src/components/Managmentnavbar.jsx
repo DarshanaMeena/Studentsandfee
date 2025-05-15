@@ -429,9 +429,9 @@ function Managmentnavbar() {
                   <li>
                               <Link to="/coursesmodule" className="md:p-4 py-2 block hover:text-purple-400">Courses</Link>
                               </li>
-                  <li>
+                  {/* <li>
                     <a className="md:p-4 py-2 block hover:text-purple-400" href="#">Fees</a>
-                  </li>
+                  </li> */}
                   <li>
                     {/* <button className='border border-2 bg-lime-800 '> */}
                    
@@ -441,7 +441,7 @@ function Managmentnavbar() {
                 </ul>
               
 <button
-  class=" md:ms-[700px] group flex items-center justify-start  h-11 text-white font-bold  px-3 bg-rose-600 rounded cursor-pointer relative overflow-hidden transition-all duration-200 shadow-lg active:translate-y-1"
+  class=" md:ms-[700px] group flex items-center justify-start  h-11 text-white font-bold  px-3 bg-rose-600 rounded cursor-pointer relative overflow-hidden transition-all duration-200 shadow-lg active:translate-y-1" onClick={logout}
 >
    <svg class="w-4 h-5" viewBox="0 0 512 512" fill="white">
       <path
@@ -480,69 +480,75 @@ function Managmentnavbar() {
       <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
         
          <div class=" h-full overflow-y-auto bg-gray-300 dark:bg-gray-800">
-            <ul class="space-y-2 font-medium">
-               <li className='w-64 items-start px-4 p-5 bg-black'>
+            <ul class="space-y-2 font-medium ">
+              <Link to={'/dashboard'}>
+              <li className='w-64 items-start px-4  p-5 bg-black'>
                   <a href="#" class="flex items-center  text-gray-900 group">
                   <span className='text-3xl text-white'><i class="fa-solid fa-user-gear"></i></span>
                      <span class="self-center ms-3 text-2xl font-semibold whitespace-nowrap dark:text-white uppercase font-sans">Managment </span>
                   </a>
                </li>
-              
-               <li className=''>
+              </Link>
+               
+              <Link to={'/dashboard'}  href="#"
+                >
+               <li className='py-3'>
                   <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                      
                   <span className='text-xl'><i class="fa-solid fa-house"></i></span>
-
-                    
-                  <Link to={'/dashboard'} className="md:p-4 py-2 block hover:text-purple-400" href="#"
-                >Dashboard</Link>
+                    <span className='ms-3'>Dashboard</span>
+                  
              
                   </a>
-              </li>
-               <li className=''>
+              </li></Link>
+
+               <Link to={'/studentregister'}  href="#"
+                >
+               <li className='py-3'>
                   <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                      
                   <span className='text-xl '> <i class="fa-solid fa-user-plus"></i></span>
 
                     
-              <Link to={'/studentregister'} className="md:p-4 block hover:text-purple-400" href="#"
-                >Student Registration</Link>
+             <span className='ms-3'>Student Registration</span>
             
                      
                   </a>
-               </li>
+               </li></Link>
                
-               <li>
+               <Link to={"/batches"} 
+                >
+               <li className='py-3'>
                   <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               
-                      <span className='text-xl mt-2'><i class="fa-solid fa-chalkboard"></i></span>
-                     <Link to={"/batches"} className=" ms-5 block hover:text-purple-400" 
-                >Batches</Link>
+                      <span className='text-xl '><i class="fa-solid fa-chalkboard"></i></span>
+                     <span className='ms-3'>Batches</span>
                   </a>
-               </li>
+               </li></Link>
                
-               <li>
+                <Link to="/coursesmodule" >
+               <li className='py-3'>
                   <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                   <i class="fa-solid fa-graduation-cap"></i>
-                     <Link to="/coursesmodule" className="md:p-4 py-2 block hover:text-purple-400">Courses</Link>
+                    <span className='ms-3'>Courses</span>
                   </a>
-               </li>   
+               </li>  </Link> 
       
       
              
       
-      
-               <li>
+        <Link to='/allstudentrecord'>
+               <li className='' >
                   <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     
                       <span className='text-xl mt-2'><i class="fa-solid fa-file-signature"></i></span>
                      
                      <a>
-                     <span class="flex-1 ms-3 whitespace-nowrap">Fees</span>
+                     <span class="flex-1 ms-3 whitespace-nowrap">Student Detail</span>
                      </a>
                   </a>
                </li>
-      
+      </Link>
       
                
       

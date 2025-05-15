@@ -18,7 +18,7 @@ function Managmodul() {
   }, [])
 
   async function deletUser(id) {
-    let cnf = confirm("Are You Sure You Want To Delete This User");
+    let cnf = confirm("Are You Sure You Want To Delete This User ❌");
     if (cnf == false) {
       return false;
     }
@@ -119,10 +119,10 @@ function Managmodul() {
                   <td className="px-6 py-4">{data.qualification}</td>
                   <td className="px-6 py-4">{data.address.charAt(0).toUpperCase() + data.address.slice(1)}</td>
                   <td className="px-6 py-4 text-2xl">
-                    <Link to={`/editform/${data.id}`}>
+                    <Link to={`/editform/${data.id}`} className='' title='EDIT'>
                     <ion-icon name="create-outline" ></ion-icon>
                     </Link>  &nbsp;
-                   <button className='cursor-pointer'>
+                   <button className='cursor-pointer text-red-900' title='DELETE'>
                    <ion-icon name="trash-outline"  onClick={() => deletUser(data.id)}></ion-icon>
                     </button> 
                   </td>

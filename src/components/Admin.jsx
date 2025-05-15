@@ -46,7 +46,6 @@ function Admin() {
               },
               password : {
                 required : true,
-                maxlength:5,
                 minlength:5,
             },
     
@@ -159,11 +158,7 @@ function Admin() {
                       </div>
             
                       {/* Forgot Password */}
-                      <div className="text-right text-sm">
-                        <a href="#" className="text-blue-600 hover:underline">
-                          Forgot Password?
-                        </a>
-                      </div>
+                      
             
                       {/* Submit */}
                       <button

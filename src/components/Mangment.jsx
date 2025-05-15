@@ -127,11 +127,7 @@ function Mangment() {
                       </div>
             
                       {/* Forgot Password */}
-                      <div className="text-right text-sm">
-                        <a href="#" className="text-blue-600 hover:underline">
-                          Forgot Password?
-                        </a>
-                      </div>
+                     
             
                       {/* Submit */}
                       <button

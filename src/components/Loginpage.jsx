@@ -38,9 +38,9 @@ function Loginpage() {
                     <Typewriter
                       words={['Student Managment System']}
                       loop={0}
-                      cursor={false}
-                      cursorStyle='_'
-                      typeSpeed={70}
+                      cursor={true}
+                      cursorStyle='✍️'
+                      typeSpeed={80}
                       deleteSpeed={0}
                       delaySpeed={10000}
                       onLoopDone={handleDone}

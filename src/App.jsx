@@ -45,8 +45,8 @@ function App() {
           <Route path="Admin" element={<Admin />} />
           <Route path="Management" element={<Mangment />} />
           <Route path="Student" element={<Student />} />
-          <Route path="adminnav" element={<div><Adminnavbar /> <AdminHomePage /></div>} />
-          <Route path="managmentnav" element={<div><Managmentnavbar /> <AdminHomePage /></div>} />
+          <Route path="adminnav" element={<div><Adminnavbar /></div>} />
+          <Route path="managmentnav" element={<div><Managmentnavbar /></div>} />
       {/* Admin Routing */}
       
           <Route path="managmentmodul" element={<Managmodul />} />
@@ -63,7 +63,7 @@ function App() {
         <Route path="studentdetail" element={<Viewdetail_stude />}/>
         {/* <Route path="editstudentform/:id" element={<EditStudentForm />}/> */}
         {/* <Route path="editstudentform/:id" element={<EditStudentForm />}/> */}
-        <Route path="editstudentform/:id" element={<Testing />}/>
+        <Route path="editstudentform/:id" element={<EditStudentForm />}/>
 
         {/* Batches Module */}
         <Route path="batches" element={<Batchesmodul />} />
