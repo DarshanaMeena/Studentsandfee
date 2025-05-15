@@ -59,7 +59,9 @@ function Testing() {
   }, [])
 
   async function updateformval(ev, key) {
+    
     let val = ev.target.value;
+    console.log(val, Studentedit)
     let newval = await { ...Studentedit, [key]: val }
     console.log(newval)
     setStudentedit([newval])
@@ -140,12 +142,12 @@ function Testing() {
 
   };
   async function registerstudents() {
-    const responce = await CallAjax(`http://localhost:4050/getallvillages`, {}, 'GET')
+    // const responce = await CallAjax(`http://localhost:4050/getallvillages`, {}, 'GET')
 
     /*await response.map((city)=>{
          options.push({value: city.value, label : city.label});
     })*/
-    setVillages(responce)
+    // setVillages(responce)
 
   }
 
@@ -276,8 +278,8 @@ function Testing() {
 
   }
 
-  async function studentvillage(t_id) {
-    const responce = await CallAjax(`http://localhost:4050/getallvillages/${t_id}`, {}, 'GET')
+  async function studentvillage(teh) {
+    const responce = await CallAjax(`http://localhost:4050/gettehvillages/${teh}`, {}, 'GET')
 
     /*await response.map((city)=>{
          options.push({value: city.value, label : city.label});
@@ -404,7 +406,7 @@ function Testing() {
                           Date of Birth
                         </label>
                         <input type="date" name="date" id="date"
-                          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md" value={moment(val.stude_dob).format('YYYY-MM-DD')} onChange={(ev) => { updateformval(ev, 'date') }} />
+                          class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md" value={moment(val.stude_dob).format('YYYY-MM-DD')} onChange={(ev) => { updateformval(ev, 'stude_dob') }} />
                       </div>
                     </div>
                     <div class="w-full px-3 sm:w-1/2">
@@ -413,7 +415,7 @@ function Testing() {
                           Admission Date
 
                         </label>
-                        <input type="date" name="admition" id="date" value={moment(val.admition_date).format('YYYY-MM-DD')} onChange={(ev) => { updateformval(ev, 'admition') }}
+                        <input type="date" name="admition" id="adate" value={moment(val.admition_date).format('YYYY-MM-DD')} onChange={(ev) => { updateformval(ev, 'admition') }}
                           class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md" />
                       </div>
                     </div>
@@ -617,13 +619,13 @@ function Testing() {
                   </div>
                   <Addcity isOpen={isModalOpen} onClose={closeModal} studentteh={studentteh} handleChange={handleChange} district={selectedis}>
                     <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
-                      Add Villages
+                      Add Tehsil
                     </h3>
                   </Addcity>
                   <div class="-mx-3 flex flex-wrap">
                     <div class="w-full px-3 sm:w-1/2 ">
                       <label for="name" class="mb-3 block text-base font-medium text-[#07074D]">
-                        Village/City
+                        Tehsil/City
                       </label>
                       <div class="mb-5">
                         <div>
@@ -640,7 +642,7 @@ function Testing() {
                     <div class="w-full px-3 sm:w-1/2 mt-auto ">
                       <div class="mb-5">
                         <div class="flex justify-center">
-                          <div class={`rounded-md bg-gradient-to-r from-blue-700 to-blue-500 px-11 py-3 text-white hover:from-blue-800 hover:to-white-500 ${selectedis ? 'cursor-pointer' : 'cursor-not-allowed'}`} onClick={selectedis ? openModal : ''}>
+                          <div class={`rounded-md bg-gradient-to-r from-blue-700 to-blue-500 px-11 py-3 text-white hover:from-blue-800 hover:to-white-500 ${selectedis ? 'cursor-pointer' : 'cursor-not-allowed'}`} onClick={selectedis ? openModalv : ''}>
                             Add
                           </div>
                         </div>
@@ -649,14 +651,14 @@ function Testing() {
                   </div>
                 </div>
 
-                <Addvillage isOpen={isModalvOpen} onClose={closeModal} studentvillage={studentvillage} handleChangevilllage={handleChangevilllage} allcities={cities}>
-                  <div className='m-auto'>
-                    <h3 className="text-lg leading-6 font-medium text-gray-900 " id="modal-headline">
-                      Add Villages
-                    </h3>
-                  </div>
+                 <Addvillage isOpen={isModalvOpen} onClose={closeModal} studentvillage={studentvillage} handleChangevilllage={handleChangevilllage} allcities={cities} selectedValue={selectedValue}>
+              <div className='m-auto'>
+                <h3 className="text-lg leading-6 font-medium text-gray-900 " id="modal-headline">
+                  Add Villages
+                </h3>
+              </div>
 
-                </Addvillage>
+            </Addvillage>
                 <div>
                   <button type='submit'
                     class="hover:shadow-form w-full rounded-md bg-gradient-to-r from-blue-700 to-blue-500 px-11 py-3 text-white hover:from-blue-800 hover:to-white-500 py-3 px-8 text-center text-base font-semibold text-white outline-none">

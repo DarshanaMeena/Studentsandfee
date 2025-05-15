@@ -28,7 +28,7 @@ routes.use(cors());
 routes.post('/studentdata', upload.none(), (req, res) => {
     let { sname, fname, date, email, sphone, fphone, gender,admition, category, classname, batch, district, course, city, address, village,password,cpassword } = req.body;
 
-    mysql.query(`INSERT INTO student_registration(stude_name,stude_fname,stude_email,stude_dob,stude_snum,stude_pnum,gender,admition_date,category,betch_id,course_id,dis_id,city_id,village_id,address,education,stud_pass) VALUES('${sname}','${fname}','${email}','${date}','${sphone}','${fphone}','${gender}','${admition ? admition : moment(new Date()).format('YYYY-MM-DD')}','${category}','${batch}','${course}','${district}','${city}','${village}','${address}','${classname}','${password}')`, (error, result) => {
+    mysql.query(`INSERT INTO student_registration(stude_name,stude_fname,stude_email,stude_dob,stude_snum,stude_pnum,gender,admition_date,category,betch_id,course_id,dis_id,city_id,village_id,address,education,stud_pass) VALUES('${sname}','${fname}','${email}','${date}','${sphone}','${fphone}','${gender}','${admition ? admition : moment(new Date()).format('YYYY-MM-DD')}','${category}','${batch}','${course}','${district}','${city}','${village}','${address}','${classname}','${md5(password)}')`, (error, result) => {
         if (error) {
             return res.status(500).json(error);
         }
@@ -44,7 +44,7 @@ routes.post('/studentdata', upload.none(), (req, res) => {
 routes.put('/editstud/:id', upload.none(), (req, res) => {
     const {  sname, fname,email, date, sphone, fphone, gender,admition, category, classname, batch, district, course, city, address, village,password, cpassword} = req.body;
     let stude_id = req.params.id;
-    mysql.query(`UPDATE student_registration SET stude_name = '${sname}', stude_fname='${fname}', stude_email= '${email}', stude_dob='${date}',stude_snum='${sphone}',stude_pnum='${fphone}',gender='${gender}',admition_date='${admition ? admition : moment(new Date()).format('YYYY-MM-DD')}',category='${category}',education='${classname}',betch_id='${batch}',dis_id='${district}',course_id='${course}',city_id='${city}',address='${address}',village_id='${village}',stud_pass='${password}' WHERE stud_id='${stude_id}'`, (error, result) => {
+    mysql.query(`UPDATE student_registration SET stude_name = '${sname}', stude_fname='${fname}', stude_email= '${email}', stude_dob='${date}',stude_snum='${sphone}',stude_pnum='${fphone}',gender='${gender}',admition_date='${admition ? admition : moment(new Date()).format('YYYY-MM-DD')}',category='${category}',education='${classname}',betch_id='${batch}',dis_id='${district}',course_id='${course}',city_id='${city}',address='${address}',village_id='${village}',stud_pass='${md5(password)}' WHERE stud_id='${stude_id}'`, (error, result) => {
         if (error) {
             return res.status(500).json(error);
         }
@@ -175,19 +175,19 @@ routes.get("/getcitybyid/:city_id", upload.none(), (req, res) => {
 
 
 //  get village (get method)
-routes.get("/getallvillages", upload.none(), (req, res) => {
-    // return res.send(req.body)
+// routes.get("/getallvillages", upload.none(), (req, res) => {
+//     // return res.send(req.body)
 
-    mysql.query(`select village_id as value,village_name as label from villages WHERE city_id = '${req.params.city_id}'`, (error, result) => {
-        if (error) {
-            return res.status(500).json(error)
-        }
+//     mysql.query(`select village_id as value,village_name as label from villages WHERE city_id = '${req.params.city_id}'`, (error, result) => {
+//         if (error) {
+//             return res.status(500).json(error)
+//         }
 
-        return res.status(200).json(result);
+//         return res.status(200).json(`select village_id as value,village_name as label from villages WHERE city_id = '${req.params.city_id}'`);
 
-    })
+//     })
 
-})
+// })
 
 routes.get("/gettehvillages/:teh_id", upload.none(), (req, res) => {
     // return res.send(req.body)

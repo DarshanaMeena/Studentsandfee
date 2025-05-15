@@ -2,8 +2,8 @@ import React from 'react'
 import CallAjax from '../../Hook/CallAjax';
 import $ from 'jquery'
 
-function Addvillage({ isOpen, onClose, children, registerstudents, handleChangevilllage,selectedValue },props) {
-    async function addvillages(ev) { alert()
+function Addvillage({ isOpen, onClose, children, studentvillage, handleChangevilllage,selectedValue },props) {
+    async function addvillages(ev) { 
         ev.preventDefault();
 
         let formdata = {
@@ -17,7 +17,7 @@ function Addvillage({ isOpen, onClose, children, registerstudents, handleChangev
         if(result) {
           console.log("Add village ");
           
-          await registerstudents(selectedValue.value);
+          await studentvillage(selectedValue.value);
 
           await handleChangevilllage({value: $("#villagename").val(), label: $("#villagename").val()})
           
@@ -58,7 +58,7 @@ function Addvillage({ isOpen, onClose, children, registerstudents, handleChangev
 
        
           <button type="button" className="inline-flex cursor-pointer items-center gap-1 rounded border border-slate-300 bg-gradient-to-b from-slate-50 to-slate-200 px-4 py-2 font-semibold hover:opacity-90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-slate-300 focus-visible:ring-offset-2 active:opacity-100" onClick={onClose}>
-            Close
+            Close 1
           </button>
 
           <button onClick={addvillages}

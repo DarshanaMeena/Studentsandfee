@@ -156,6 +156,9 @@ function RegistrationForm() {
         date: {
           required: true,
         },
+        admition: {
+          required: true,
+        },
         sphone: {
           required: true,
           minlength: 10,
@@ -175,12 +178,26 @@ function RegistrationForm() {
         batch: {
           required: true,
         },
+        course: {
+          required: true,
+        },
         classname: {
           required: true,
         },
         address: {
           required: true,
         },
+        password: {
+          required: true,
+          minlength: 8,
+          
+        },
+        cpassword: {
+          required: true,
+          minlength: 8,
+          equalTo: "#mainpass"
+        },
+        
 
       },
       messages: {
@@ -264,7 +281,7 @@ function RegistrationForm() {
 
                     <input
                       type={showPassword ? "text" : "password"}
-                      placeholder="Password"
+                      placeholder="Password" id='mainpass'
                       className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md"
                       name='password'
                     />
@@ -290,7 +307,7 @@ function RegistrationForm() {
                       type={showCpassword ? "text" : "password"}
                       placeholder=" Conform Password"
                       className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-blue-400 focus:shadow-md"
-                      name='password'
+                      name='cpassword'
                     />
 
                     <button
